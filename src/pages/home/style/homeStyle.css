@@ -1,0 +1,17 @@
+
+
+.spacer {
+    aspect-ratio: 16/9;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer1 {
+    background-image: url('./layered-waves.svg');
+}
+
+.layer2 {
+    background-image: url('./wave-1.svg');
+}
