@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import { Grid, Link } from "@mui/material";
 
-import DarkModeToggle from "react-dark-mode-toggle";
+import { DarkModeToggle } from "react-dark-mode-toggle-2";
 
 import { MenuItem, MenuItemBold } from './style/navigationBarStyle';
 import { withTheme } from "@mui/styles";
@@ -69,7 +69,7 @@ class NavigationBar extends React.Component {
 								<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around'}}>
 									<DarkModeToggle
 									onChange={this.props.changeColorMode}
-									checked={this.props.theme.palette.mode === 'dark'}
+									isDarkMode={this.props.theme.palette.mode === 'dark'}
 									size={50}
 									/>
 								</Box>
