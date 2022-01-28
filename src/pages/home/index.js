@@ -30,6 +30,7 @@ class Home extends React.Component {
                         Sed euismod, urna eu tincidunt consectetur,
                         nisi nisl tincidunt nisi, eget consectetur
                     </p>
+                    <Button variant='contained'>Fredo</Button>
                     <p>Lorem ipsum 
                         dolor sit amet, consectetur adipiscing elit.
                         Sed euismod, urna eu tincidunt consectetur,
