@@ -1,7 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Link } from "@mui/material";
 import { Toolbar } from "@mui/material";
-
+import {Grid} from "@mui/material";
 
 
 export default class Footer extends React.Component {
@@ -15,11 +15,26 @@ export default class Footer extends React.Component {
 
     render() {
         return(
-            
-            <Toolbar sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                <Box>
-                    Footer
-                </Box>
+            <Toolbar variant="dense" >
+                <Grid container sapcing={3} >
+                    <Grid item sm={1} md={3} />
+                    <Grid item sm={6} md={4}>
+                        <Box sx={{ flexGrow: 1, display:'flex', py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline'}}>
+                        © 2022 Philipp Alber. All Rights Reserved.
+                        </Box>
+                    </Grid>
+                    <Grid item sm={3} md={2}>
+                        <Box sx={{ flexGrow: 1, display: 'flex', py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline'}}>
+                            <Link href="#" underline="none">
+                                Impressum
+                            </Link>
+                            <Link href="#" underline="none">
+                                Datenschutz
+                            </Link>
+                        </Box>
+                    </Grid>
+                    <Grid item sm={1} md={3} />
+                </Grid>
             </Toolbar>
         );
     }
