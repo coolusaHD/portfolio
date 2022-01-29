@@ -28,11 +28,10 @@ class NavigationBar extends React.Component {
 
 	render() {
 
-		console.log(this.props.theme.palette);
 
 		const { theme } = this.props;
 
-		console.log(theme.palette.background.toolbar)
+	
 
 		return (
 			<AppBar position="fixed" color="transparent" elevation={0} >
@@ -42,22 +41,22 @@ class NavigationBar extends React.Component {
 							<Grid item sm={10} md={6}>
 								<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline'}}>
 
-									<Link href="#" underline="none">
+									<Link href="#" underline="none" color="inherit">
 										<MenuItemBold>
 											Philipp Alber
 										</MenuItemBold>
 									</Link>
-									<Link href="#" underline="hover">
+									<Link href="#" underline="hover" color="inherit">
 										<MenuItem>
 											Über mich
 										</MenuItem>
 									</Link>
-									<Link href="#" underline="hover">
+									<Link href="#" underline="hover" color="inherit">
 										<MenuItem>
 											Projekte
 										</MenuItem>
 									</Link>
-									<Link href="#" underline="hover">
+									<Link href="#" underline="hover" color="inherit">
 										<MenuItem>
 											Source
 										</MenuItem>

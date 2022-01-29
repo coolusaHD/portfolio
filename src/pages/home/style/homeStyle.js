@@ -11,6 +11,7 @@ export const SiteContent = styled.div`
 export const Section = styled.div`
 
     background-color: ${props => props.bg};
+    color: ${props => props.color};
     min-height: 200px;
     padding: 20px 10px;
 `;

@@ -16,92 +16,34 @@ class Home extends React.Component {
     }
 
     render() {
+        const theme = this.props.theme;
+
         return(
             <SiteContent>
 
-                <Section bg={'#071824'}>
-                    <p>MAIN
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                    </p>
-                    <Button variant='contained'>Fredo</Button>
-                    <p>Lorem ipsum 
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
+                <Section bg={theme.palette.background.default}>
+                    <p>Willkommen Text
                     </p>
                 </Section>
 
             <div className='spacer layer3'></div>
 
-                <Section bg={'#c11e67'}>
-                    <p>1 
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                    </p>
-                    <Button variant='contained'>Fredo</Button>
-                    <p>Lorem ipsum 
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
+                <Section bg={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
+                    <p>Über mich Text
                     </p>
                 </Section>
 
                 <div className='spacer layer4'></div>
 
-                <Section bg={'#071824'}>
-                    <p>2 
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                    </p>
-                    <Button variant='contained'>Fredo</Button>
-                    <p>Lorem ipsum 
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
+                <Section bg={theme.palette.background.default}>
+                    <p>Projekte Text
                     </p>
                 </Section>
 
                 <div className='spacer layer1'></div>
 
-                <Section bg={'#245d5f'}>
-                    <p>3 
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                    </p>
-                    <Button variant='contained'>Fredo</Button>
-                    <p>Lorem ipsum 
-                        dolor sit amet, consectetur adipiscing elit.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
-                        urna nisl euismod nisi.
-                        Sed euismod, urna eu tincidunt consectetur,
-                        nisi nisl tincidunt nisi, eget consectetur
+                <Section bg={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
+                    <p>Source und auflistung der Pakete
                     </p>
                 </Section>
                 

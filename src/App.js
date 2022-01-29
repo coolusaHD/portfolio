@@ -37,38 +37,40 @@ function App() {
           palette: {
             mode,
             ...(mode === 'light'
-      ? {
-          // palette values for light mode
-          primary:{
-            main:  '#34a0a4',
-          },
-          secondary:{
-            main: '#c11e67',
-          } ,
-          background: {
-            default: '#fafafa',
-            toolbar: 'rgba(255, 255, 255, 0.1)',
-          },
-        }
-      : {
-          // palette values for dark mode{
-          primary: {
-            main: '#319da0',
-          },
-          secondary:{
-            main: '#c11e67',
-          } ,
-          background: {
-            default: '#071824',
-            toolbar: 'transparent',
-          },
-          text: {
-            primary: '#fafafa',
-          },
-          link: {
-            main: '#34a0a4',
-          },
-        }),
+              ? {
+                  // palette values for light mode
+                  primary:{
+                    main:  '#319da0',
+                  },
+                  secondary:{
+                    main: '#c11e67',
+                  } ,
+                  background: {
+                    default: '#fafafa',
+                    toolbar: 'rgba(255, 255, 255, 0.1)',
+                  },
+                  text: {
+                    main: '#000',
+                    coloredSection: '#fafafa',
+                  },
+                }
+              : {
+                  // palette values for dark mode{
+                  primary: {
+                    main: '#319da0',
+                  },
+                  secondary:{
+                    main: '#c11e67',
+                  } ,
+                  background: {
+                    default: '#071824',
+                    toolbar: 'transparent',
+                  },
+                  text: {
+                    main: '#fafafa',
+                    coloredSection: '#fafafa',
+                  },
+                }),
           },
         }),
       [mode],
