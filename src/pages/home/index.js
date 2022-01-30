@@ -24,28 +24,28 @@ class Home extends React.Component {
         return(
             <SiteContent>
 
-                <Section bg={theme.palette.background.default}>
+                <Section id="home" bg={theme.palette.background.default}>
                     <p>Willkommen Text
                     </p>
                 </Section>
 
             <div className='spacer layer3'></div>
 
-                <Section bg={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
+                <Section id="about-me" bg={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
                     {/* <AboutMe /> */}
                     <AboutMe />
                 </Section>
 
                 <div className='spacer layer4'></div>
 
-                <Section bg={theme.palette.background.default}>
+                <Section id="projects" bg={theme.palette.background.default}>
                     <p>Projekte Text
                     </p>
                 </Section>
 
                 <div className='spacer layer1'></div>
 
-                <Section bg={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
+                <Section id="source" bg={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
                     <p>Source und auflistung der Pakete
                     </p>
                 </Section>

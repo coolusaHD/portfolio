@@ -26,6 +26,17 @@ class NavigationBar extends React.Component {
 		}
 	}
 
+	scrollTo = (id) => {
+		document.getElementById(id).scrollIntoView({
+			behavior: 'smooth',
+			block: 'center',
+			inline: 'center'
+		});
+	}
+
+
+
+
 	render() {
 
 
@@ -41,27 +52,22 @@ class NavigationBar extends React.Component {
 							<Grid item sm={10} md={6}>
 								<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline'}}>
 
-									<Link href="#" underline="none" color="inherit">
-										<MenuItemBold>
-											Philipp Alber
-										</MenuItemBold>
-									</Link>
-									<Link href="#" underline="hover" color="inherit">
-										<MenuItem>
-											Über mich
-										</MenuItem>
-									</Link>
-									<Link href="#" underline="hover" color="inherit">
-										<MenuItem>
-											Projekte
-										</MenuItem>
-									</Link>
-									<Link href="#" underline="hover" color="inherit">
-										<MenuItem>
-											Source
-										</MenuItem>
-									</Link>
-									
+									<MenuItemBold onClick={()=>this.scrollTo('home')}>
+										Philipp Alber
+									</MenuItemBold>
+
+									<MenuItem onClick={()=>this.scrollTo('about-me')}>
+										Über mich
+									</MenuItem> 
+
+									<MenuItem onClick={()=>this.scrollTo('projects')}>
+										Projekte
+									</MenuItem>
+
+									<MenuItem onClick={()=>this.scrollTo('source')}>
+										Source
+									</MenuItem>
+
 								</Box>
 							</Grid>
 							<Grid item sm={1} md={3}>
