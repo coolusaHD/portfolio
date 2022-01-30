@@ -6,6 +6,9 @@ import {SiteContent, Section} from './style/homeStyle';
 import './style/homeStyle.css';
 
 
+import AboutMe from '../about-me/index';
+
+
 class Home extends React.Component {
     
     constructor(props) {
@@ -29,8 +32,8 @@ class Home extends React.Component {
             <div className='spacer layer3'></div>
 
                 <Section bg={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
-                    <p>Über mich Text
-                    </p>
+                    {/* <AboutMe /> */}
+                    <AboutMe />
                 </Section>
 
                 <div className='spacer layer4'></div>
