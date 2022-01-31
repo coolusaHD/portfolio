@@ -1,6 +1,6 @@
 import React from 'react';
 import { AboutMeContainer, AboutMeDescription } from './style/aboutMeStyle.js'
-
+import { Link } from '@mui/material';
 import { Grid, Typography } from '@mui/material';
 
 
@@ -23,7 +23,7 @@ export default function AboutMe(props){
                         Hallo 👋 Ich bin Philipp
                     </Typography>
                     <AboutMeDescription>
-                        Ich bin 20 Jahre alt und studiere Informatik an der Eberhard-Karls Universität in Tübingen.
+                        Ich bin 20 Jahre alt und studiere Informatik an der <Link color='inherit' href="https://uni-tuebingen.de/" underline="always">Eberhard Karls Universität</Link> in Tübingen.
                         <br />
                         <br />
                         Seit ich 16 bin, programmiere ich leidenschaftlich Websiten. Mit den Jahren habe ich durch verschiedenste Projekte immer mehr

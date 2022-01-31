@@ -7,6 +7,7 @@ import './style/homeStyle.css';
 
 
 import AboutMe from '../about-me/index';
+import Source from '../source/index';
 
 
 class Home extends React.Component {
@@ -46,8 +47,8 @@ class Home extends React.Component {
                 <div className='spacer layer1'></div>
 
                 <Section id="source" bg={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
-                    <p>Source und auflistung der Pakete
-                    </p>
+                    {/* <Source /> */}
+                    <Source />
                 </Section>
                 
                 <div className='spacer layer2'></div>
