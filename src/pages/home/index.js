@@ -8,6 +8,7 @@ import './style/homeStyle.css';
 
 import AboutMe from '../about-me/index';
 import Source from '../source/index';
+import Projects from '../projects/index';
 
 
 class Home extends React.Component {
@@ -40,8 +41,7 @@ class Home extends React.Component {
                 <div className='spacer layer4'></div>
 
                 <Section id="projects" bg={theme.palette.background.default}>
-                    <p>Projekte Text
-                    </p>
+                    <Projects />
                 </Section>
 
                 <div className='spacer layer1'></div>

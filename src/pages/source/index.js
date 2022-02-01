@@ -19,13 +19,13 @@ export default function Source(props){
 
                 <Container>
                     <Typography variant="h2">
-                        Source Pakete
+                        Source Pakete  
                     </Typography>
 
                     <br />
 
                     <Typography variant="h5">
-                        Diese Website wurde mitfolgenden Paketen und Weiteren enwickelt:
+                        Diese Website wurde mitfolgenden Paketen 📂 und Weiteren enwickelt:
                     </Typography>
                     <Typography variant="h6">
                         Alle Pakete und den kompletten Quellcode findet ihr auf <Link color='inherit' href="https://github.com/coolusaHD/portfolio" target="_blank" rel="noreferrer">GitHub</Link>.
