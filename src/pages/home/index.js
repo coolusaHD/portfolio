@@ -1,61 +1,62 @@
+import React, { useEffect, useState } from 'react';
+import { useTheme, withTheme } from '@mui/styles';
 import { Button } from '@mui/material';
-import React from 'react';
-import { withTheme } from '@mui/styles';
-
-import {SiteContent, Section} from './style/homeStyle';
+import {SiteContent, Section, ScrollIndicator} from './style/homeStyle';
 import './style/homeStyle.css';
 
 
 import AboutMe from '../about-me/index';
 import Source from '../source/index';
 import Projects from '../projects/index';
+import Welcome from '../welcome/index';
 
 
-class Home extends React.Component {
+export default function Home(props) {
     
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [],
-        }
-    }
+    const theme = useTheme();
 
-    render() {
-        const theme = this.props.theme;
+    const [offset, setOffset] = useState(0);
 
-        return(
-            <SiteContent>
+    useEffect(() => {
+        const onScroll = () => setOffset(window.pageYOffset);
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
-                <Section id="home" bg={theme.palette.background.default}>
-                    <p>Willkommen Text
-                    </p>
-                </Section>
+    console.log(offset); 
 
-            <div className='spacer layer3'></div>
+    return(
+        <SiteContent>
 
-                <Section id="about-me" bg={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
-                    {/* <AboutMe /> */}
-                    <AboutMe />
-                </Section>
+            <Section id="home" bg={theme.palette.background.default}>
+                <Welcome />
+            </Section>
 
-                <div className='spacer layer4'></div>
+            <ScrollIndicator opacity={window.scrollY/5 < 100 ? (window.scrollY/5-100)*-1 : 0} /> 
 
-                <Section id="projects" bg={theme.palette.background.default}>
-                    <Projects />
-                </Section>
+        <div className='spacer layer3'></div>
 
-                <div className='spacer layer1'></div>
+            <Section id="about-me" bg={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
+                {/* <AboutMe /> */}
+                <AboutMe />
+            </Section>
 
-                <Section id="source" bg={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
-                    {/* <Source /> */}
-                    <Source />
-                </Section>
-                
-                <div className='spacer layer2'></div>
+            <div className='spacer layer4'></div>
 
+            <Section id="projects" bg={theme.palette.background.default}>
+                <Projects />
+            </Section>
 
+            <div className='spacer layer1'></div>
 
-            </SiteContent>
-        );
-    }
-}export default withTheme(Home);
+            <Section id="source" bg={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
+                {/* <Source /> */}
+                <Source />
+            </Section>
+            
+            <div className='spacer layer2'></div>
+
+        </SiteContent>
+    );
+};
