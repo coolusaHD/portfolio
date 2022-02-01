@@ -24,7 +24,8 @@ export default function Home(props) {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    console.log(offset); 
+    console.log(offset);
+    console.log(theme.palette.text); 
 
     return(
         <SiteContent>
@@ -33,7 +34,7 @@ export default function Home(props) {
                 <Welcome />
             </Section>
 
-            <ScrollIndicator opacity={window.scrollY/5 < 100 ? (window.scrollY/5-100)*-1 : 0} /> 
+            <ScrollIndicator opacity={window.scrollY/5 < 100 ? (window.scrollY/5-100)*-1 : 0} color={theme.palette.text.primary} /> 
 
         <div className='spacer layer3'></div>
 

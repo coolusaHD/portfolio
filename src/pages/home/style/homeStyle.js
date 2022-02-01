@@ -33,7 +33,7 @@ export const ScrollIndicator = styled.div`
         content: '';
         width: 8px;
         height: 8px;
-        background: #fff;
+        background: ${props => props.color};
         margin-left: -4px;
         top: 8px;
         border-radius: 4px;
@@ -46,7 +46,7 @@ export const ScrollIndicator = styled.div`
     margin-left: -20px;
     top: 50%;
     margin-top: -35px;
-    box-shadow: 0px 0px 1px #fff;
+    box-shadow: 0px 0px 1px ${props => props.color};
     border-radius: 525px;
     position: fixed;
     left: 50%;
