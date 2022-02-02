@@ -7,6 +7,7 @@ export const Container = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
+    height: 100px;
 `;
 
 export const ColoredText = styled.span`
@@ -37,4 +38,11 @@ export const ProfilePictureContainer = styled.div`
         border-radius: 50%;
         z-index: 200;
     }
+`;
+
+export const Description = styled.div`
+    text-align: right;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.5;
 `;

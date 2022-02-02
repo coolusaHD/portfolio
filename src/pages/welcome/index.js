@@ -1,5 +1,5 @@
 import React, { Profiler } from 'react';
-import { Container, ColoredText, ProfilePicture, ProfilePictureContainer } from './style/welcomeStyle.js'
+import { Container, ColoredText, ProfilePicture, ProfilePictureContainer, Description } from './style/welcomeStyle.js'
 import { Box, Link } from '@mui/material';
 import { Grid, Typography, Button } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -36,21 +36,23 @@ export default function Welcome(props){
                     </Typography>
 
                     <Box sx={{display: 'flex'}}>
+                        <Box sx={{width: '40%'}}>
 
-                        <ProfilePictureContainer>
+                            <ProfilePictureContainer>
 
-                            <ProfilePicture src={Profile} alt="Profile Picture" />
+                                <ProfilePicture src={Profile} alt="Profile Picture" />
 
-                        </ProfilePictureContainer>
+                            </ProfilePictureContainer>
+
+                        </Box>
+
+                        <Box sx={{width: '60%', mt: '7rem',  backgroundColor: theme.palette.background.paper, p: 2, borderRadius: 2}}>
+                            <Description>
+                                Front-End Developer, <br/> UI/UX Designer und Web-Entwickler
+                            </Description>
+                        </Box>
 
                     </Box>
-
-
-                <Container>
-
-                    
-
-                </Container>
 
             </Grid>
 

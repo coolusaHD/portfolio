@@ -26,8 +26,8 @@ export default function AboutMe(props){
                         Ich bin 20 Jahre alt und studiere Informatik an der <Link color='inherit' href="https://uni-tuebingen.de/" underline="always">Eberhard Karls Universität</Link> in Tübingen.
                         <br />
                         <br />
-                        Seit ich 16 bin, programmiere ich leidenschaftlich Websiten. Mit den Jahren habe ich durch verschiedenste Projekte immer mehr
-                        Erfahrungen in Programmiersprachen und Entwicklung von Web-Applikation gesammelt.
+                        Seit ich 16 bin, programmiere ich leidenschaftlich Websites. Mit den Jahren habe ich durch verschiedenste Projekte immer mehr
+                        Erfahrungen in Programmiersprachen und Entwicklung von Web-Applikationen gesammelt.
                         <br />
                         <br />
                         Außerhalb meiner IDE findet man mich auch gerne auf dem Fussballfeld oder der Skipiste mit meinen Freunden.

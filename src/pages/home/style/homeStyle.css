@@ -1,7 +1,10 @@
 
+#home{
+    height: 80vh;
+}
 
 .spacer {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/4;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;

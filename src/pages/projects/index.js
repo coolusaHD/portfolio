@@ -29,8 +29,8 @@ export default function Projects(props){
 
                     <br />
 
-                    <Typography variant="h5">
-                        Übersicht über alle Projeckte, an denen ich aktiv mitgewirkt habe.
+                    <Typography variant="h5" align='left'>
+                        Übersicht über eine Auswahl von Projekten, an denen ich aktiv mitgewirkt habe.
                     </Typography>
 
                     <br />
@@ -38,7 +38,7 @@ export default function Projects(props){
                 
                     <ProjectList>
 
-                        <Box sx={{ width: '100%', bgcolor: 'background.paper', borderRadius: 5, p: 2 }}>
+                        <Box sx={{ width: '100%', bgcolor: 'background', borderRadius: 5, py: 2 }}>
 
                         <Accordion>
                             <AccordionSummary
@@ -49,7 +49,8 @@ export default function Projects(props){
                             <AccordionDetails>
                                 <Typography>
                                     Der Order-Butler ist eine Software, um interne Betriebabläufe 
-                                    beim Bewerten von Pokemon Karten zu unterstützten.
+                                    beim Bewerten von Pokemon Karten zu unterstützten. Dabei arbeiten wir mit einem Digitalen Laufzettel,
+                                    welcher durch einen QR-Code mit der Bestellung verknüpft wird.
                                 </Typography>
                                 <br/>
                                 <Typography color='primary' align='right' variant='caption'> (JS, REACT, Express, MongoDB) </Typography>

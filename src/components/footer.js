@@ -18,19 +18,9 @@ export default class Footer extends React.Component {
             <Toolbar variant="dense" >
                 <Grid container sapcing={4} >
                     <Grid item sm={1} md={3} />
-                    <Grid item sm={6} md={4}>
-                        <Box sx={{ flexGrow: 1, display:'flex', py: 1 , justifyContent: 'flex-start' ,alignItems: 'baseline'}}>
-                        © 2022 Philipp Alber. All Rights Reserved.
-                        </Box>
-                    </Grid>
-                    <Grid item sm={3} md={2}>
-                        <Box sx={{ flexGrow: 1, display: 'flex', py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline', gap: 1}}>
-                            <Link href="#" underline="none">
-                                Impressum
-                            </Link>
-                            <Link href="#" underline="none">
-                                Datenschutz
-                            </Link>
+                    <Grid item sm={10} md={6}>
+                        <Box sx={{ display:'flex', py: 1 , justifyContent: 'center' ,alignItems: 'baseline', gap: 1}}>
+                        © 2022 Philipp Alber | All Rights Reserved.
                         </Box>
                     </Grid>
                     <Grid item sm={1} md={3} />

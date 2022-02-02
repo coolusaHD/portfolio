@@ -68,6 +68,12 @@ class NavigationBar extends React.Component {
 										Source
 									</MenuItem>
 
+									<MenuItem>
+										<Link color='inherit' href="mailto:info@philippalber.de" underline="none">
+											Kontakt
+										</Link>
+									</MenuItem>
+
 								</Box>
 							</Grid>
 							<Grid item sm={1} md={3}>
