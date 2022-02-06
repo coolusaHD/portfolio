@@ -46,7 +46,7 @@ export default function Welcome(props){
 
                         </Box>
 
-                        <Box sx={{width: '60%', mt: '7rem',  backgroundColor: theme.palette.background.paper, p: 2, borderRadius: 2}}>
+                        <Box sx={{width: '60%', mt: '7rem', p: 2, borderRadius: 2}}>
                             <Description>
                                 Front-End Developer, <br/> UI/UX Designer und Web-Entwickler
                             </Description>

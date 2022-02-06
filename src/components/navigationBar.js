@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import { Grid, Link } from "@mui/material";
+import EmailIcon from '@mui/icons-material/Email';
 
 import { DarkModeToggle } from "react-dark-mode-toggle-2";
 
@@ -68,11 +69,11 @@ class NavigationBar extends React.Component {
 										Source
 									</MenuItem>
 
-									<MenuItem>
-										<Link color='inherit' href="mailto:info@philippalber.de" underline="none">
-											Kontakt
-										</Link>
-									</MenuItem>
+									<Link color='inherit' href="mailto:info@philippalber.de" underline="none">
+										<MenuItem>
+											Kontakt <EmailIcon />
+										</MenuItem>
+									</Link>
 
 								</Box>
 							</Grid>
