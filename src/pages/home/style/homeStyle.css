@@ -1,0 +1,30 @@
+
+#home{
+    height: 80vh;
+}
+
+.spacer {
+    aspect-ratio: 16/4;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.layer1 {
+    background-image: url('./layered-waves-1.svg');
+}
+
+.layer2 {
+    background-image: url('./wave-1.svg');
+}
+
+
+.layer3 {
+    background-image: url('./layered-waves-2.svg');
+}
+
+.layer4 {
+    background-image: url('./wave-2.svg');
+}
