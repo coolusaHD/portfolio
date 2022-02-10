@@ -1,6 +1,10 @@
 on:
   push:
     branches: [ main ]
+
+env:
+  CI: false
+
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
