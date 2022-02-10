@@ -7,6 +7,9 @@ on:
   push:
     branches: [ test ]
 
+env: 
+  CI: false
+
 jobs:
   build:
 
