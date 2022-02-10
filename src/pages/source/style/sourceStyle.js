@@ -28,6 +28,8 @@ export const SourceItem = styled.div`
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+    flex-grow: 1;
+    flex-wrap: wrap;
     gap: 1rem;
     &:hover{
         cursor: pointer;

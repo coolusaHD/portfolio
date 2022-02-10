@@ -35,8 +35,8 @@ export default function Welcome(props){
                         by Philipp Alber
                     </Typography>
 
-                    <Box sx={{display: 'flex'}}>
-                        <Box sx={{width: '40%'}}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} md={4}>
 
                             <ProfilePictureContainer>
 
@@ -44,15 +44,15 @@ export default function Welcome(props){
 
                             </ProfilePictureContainer>
 
-                        </Box>
+                        </Grid>
 
-                        <Box sx={{width: '60%', mt: '7rem', p: 2, borderRadius: 2}}>
+                        <Grid item xs={12} md={8} sx={{p: 2, mt:{xs: 0, md: 10}}}>
                             <Description>
-                                Front-End Developer, <br/> UI/UX Designer und Web-Entwickler
+                                Full-Stack Developer, <br/> UI/UX Designer und Web-Entwickler
                             </Description>
-                        </Box>
+                        </Grid>
 
-                    </Box>
+                    </Grid>
 
             </Grid>
 

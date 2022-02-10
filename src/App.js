@@ -1,7 +1,7 @@
 import * as React from "react";
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, useTheme, createTheme } from '@mui/material/styles';
+import { ThemeProvider, useTheme, createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { amber, deepOrange, grey, indigo } from '@mui/material/colors';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -31,7 +31,7 @@ function App() {
       [],
     );
   
-    const theme = React.useMemo(
+    let theme = React.useMemo(
       () =>
         createTheme({
           palette: {
@@ -75,6 +75,9 @@ function App() {
         }),
       [mode],
     );
+
+// make theme responsive
+  theme = responsiveFontSizes(theme);
 
 
   return (

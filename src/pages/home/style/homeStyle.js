@@ -22,7 +22,7 @@ const scroll = keyframes`
   }
   100%{
     opacity: 0;
-    transform: translateY(46px);
+    transform: translateY(2rem);
   }
 `;
 
@@ -35,17 +35,17 @@ export const ScrollIndicator = styled.div`
         height: 8px;
         background: ${props => props.color};
         margin-left: -4px;
-        top: 8px;
+        top: 0.5rem;
         border-radius: 4px;
         animation-duration: 1.5s;
         animation-iteration-count: infinite;
         animation-name: ${scroll};
     }
-    width: 40px;
-    height: 70px;
+    width: 2rem;
+    height: 3rem;
     margin-left: -20px;
     top: 50%;
-    margin-top: -35px;
+    margin-top: -0.7rem;
     box-shadow: 0px 0px 1px ${props => props.color};
     border-radius: 525px;
     position: fixed;

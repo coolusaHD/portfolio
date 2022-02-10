@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
@@ -15,19 +16,15 @@ import EmailIcon from '@mui/icons-material/Email';
 
 import { DarkModeToggle } from "react-dark-mode-toggle-2";
 
-import { MenuItem, MenuItemBold } from './style/navigationBarStyle';
-import { withTheme } from "@mui/styles";
+import { MenuNavItem, MenuNavItemBold } from './style/navigationBarStyle';
+import { useTheme } from "@mui/styles";
 
 
-class NavigationBar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			data: [],
-		}
-	}
+export default function NavigationBar(props){
+	
 
-	scrollTo = (id) => {
+	const scrollTo = (id) => {
+		console.log(id);
 		document.getElementById(id).scrollIntoView({
 			behavior: 'smooth',
 			block: 'center',
@@ -35,60 +32,91 @@ class NavigationBar extends React.Component {
 		});
 	}
 
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const open = Boolean(anchorEl);
+	const handleClick = (event) => {
+	  setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+	  setAnchorEl(null);
+	};
 
 
 
-	render() {
+	const theme = useTheme();
 
 
-		const { theme } = this.props;
 
-	
+	return (
+		<AppBar position="fixed" color="transparent" elevation={0}>
+				<Toolbar disableGutters sx={{backdropFilter: 'blur(10px)', backgroundColor: theme.palette.background.toolbar}}>
+					<Grid container spacing={1} sx={{justifyContent: {xs: 'space-between', md: 'center'}}}>
+						<Grid item sm={1} md={3} />
+						<Grid item sm={3} md={6}>
+							<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline'}}>
 
-		return (
-			<AppBar position="fixed" color="transparent" elevation={0} >
-					<Toolbar disableGutters sx={{backdropFilter: 'blur(10px)', backgroundColor: theme.palette.background.toolbar}}>
-						<Grid container spacing={1} alignItems="center">
-							<Grid item sm={1} md={3} />
-							<Grid item sm={10} md={6}>
-								<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline'}}>
+								<MenuNavItemBold onClick={()=>scrollTo('home')}>
+									Philipp Alber
+								</MenuNavItemBold>
 
-									<MenuItemBold onClick={()=>this.scrollTo('home')}>
-										Philipp Alber
-									</MenuItemBold>
+								<MenuNavItem onClick={()=>scrollTo('about-me')}>
+									Über mich
+								</MenuNavItem> 
 
-									<MenuItem onClick={()=>this.scrollTo('about-me')}>
-										Über mich
-									</MenuItem> 
+								<MenuNavItem onClick={()=>scrollTo('projects')}>
+									Projekte
+								</MenuNavItem>
 
-									<MenuItem onClick={()=>this.scrollTo('projects')}>
-										Projekte
-									</MenuItem>
+								<MenuNavItem onClick={()=>scrollTo('source')}>
+									Source
+								</MenuNavItem>
 
-									<MenuItem onClick={()=>this.scrollTo('source')}>
-										Source
-									</MenuItem>
+								<Link color='inherit' href="mailto:info@philippalber.de" underline="none">
+									<MenuNavItem>
+										Kontakt <EmailIcon />
+									</MenuNavItem>
+								</Link>
 
-									<Link color='inherit' href="mailto:info@philippalber.de" underline="none">
-										<MenuItem>
-											Kontakt <EmailIcon />
-										</MenuItem>
-									</Link>
+							</Box>
 
-								</Box>
-							</Grid>
-							<Grid item sm={1} md={3}>
-								<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around'}}>
-									<DarkModeToggle
-									onChange={this.props.changeColorMode}
-									isDarkMode={this.props.theme.palette.mode === 'dark'}
-									size={50}
-									/>
-								</Box>
-							</Grid>
+							<Box sx={{ flexGrow: 1, display: {xs: 'flex', md: 'none'}, py: 1, px: 2 , justifyContent: 'space-around', alignItems: 'center' }}>
+
+								<MenuNavItemBold onClick={()=>scrollTo('home')}>
+									Philipp Alber
+								</MenuNavItemBold>
+
+							</Box>
+							
 						</Grid>
-					</Toolbar>
-			</AppBar>
-		);
-	}
-}export default withTheme(NavigationBar);
+						<Grid item sm={8} md={3}>
+							<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around'}}>
+								<DarkModeToggle
+								onChange={props.changeColorMode}
+								isDarkMode={theme.palette.mode === 'dark'}
+								size={50}
+								/>
+							</Box>
+							<Box sx={{ flexGrow: 1, display: {xs: 'flex', md: 'none'}, px: 1, pr: 3 , justifyContent: 'flex-end' ,alignItems: 'center'}}>
+
+								<DarkModeToggle
+									onChange={props.changeColorMode}
+									isDarkMode={theme.palette.mode === 'dark'}
+									size={50}
+								/>
+
+								<IconButton
+									onClick={handleClick}
+								>
+									<MenuIcon />
+								</IconButton>
+
+								
+
+							</Box>
+						</Grid>
+					</Grid>
+				</Toolbar>
+		</AppBar>
+	);
+
+}

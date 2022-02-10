@@ -3,6 +3,7 @@ import { Container, Description, SourceItem, SourceImage, SourceImageContainer }
 import { Link } from '@mui/material';
 import { Grid, Typography, Button } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Tooltip from '@mui/material/Tooltip';
 import MuiLogo from '../../images/mui_logo.png';
 import ReactLogo from '../../images/react_logo.png';
@@ -27,8 +28,8 @@ export default function Source(props){
                     <Typography align='left' variant="h5">
                         Diese Website wurde mitfolgenden Paketen 📂 und Weiteren enwickelt:
                     </Typography>
-                    <Typography  variant="h5">
-                        Alle Pakete und den kompletten Quellcode findet ihr auf <Link color='inherit' href="https://github.com/coolusaHD/portfolio" target="_blank" rel="noreferrer">GitHub</Link>.
+                    <Typography  variant="h5" align='left'>
+                        Alle Pakete und den kompletten Quellcode findet ihr auf <Link color='inherit' href="https://github.com/coolusaHD/portfolio" target="_blank" rel="noreferrer">GitHub<OpenInNewIcon/></Link>.
                     </Typography>
                     <br />
                     <br />
@@ -59,7 +60,8 @@ export default function Source(props){
                         <Button 
                             variant='contained' 
                             color='secondary' 
-                            startIcon={<GitHubIcon />} 
+                            startIcon={<GitHubIcon />}
+                            endIcon={<OpenInNewIcon />} 
                             onClick={()=>{window.open("https://github.com/coolusaHD/portfolio")}} 
                         >
                             Zum Github Repository

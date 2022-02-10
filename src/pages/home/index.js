@@ -34,7 +34,7 @@ export default function Home(props) {
                 <Welcome />
             </Section>
 
-            <ScrollIndicator opacity={window.scrollY/3 < 100 ? (window.scrollY/3-100)*-1 : 0} color={theme.palette.text.primary} /> 
+            <ScrollIndicator opacity={window.scrollY/3 < 1000 ? (window.scrollY/3-100)*-1 : 0} color={theme.palette.text.primary} /> 
 
         <div className='spacer layer3'></div>
 

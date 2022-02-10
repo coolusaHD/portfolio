@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const MenuItem = styled.div`
+export const MenuNavItem = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -11,7 +11,7 @@ export const MenuItem = styled.div`
     }
 `;
 
-export const MenuItemBold = styled.div`
+export const MenuNavItemBold = styled.div`
     font-weight: bold;
     font-size: 1.2em;
     text-decoration: none;
