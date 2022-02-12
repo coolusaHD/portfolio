@@ -1,12 +1,7 @@
 import React from 'react';
 import { ProjectList, Container } from './style/projectsStyle.js'
-import { Box, Checkbox, Link } from '@mui/material';
-import { Grid, Typography, Button } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import Tooltip from '@mui/material/Tooltip';
-import MuiLogo from '../../images/mui_logo.png';
-import ReactLogo from '../../images/react_logo.png';
-import StyledComponentsLogo from '../../images/styled-components_logo.png';
+import { Box } from '@mui/material';
+import { Grid, Typography, } from '@mui/material';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';

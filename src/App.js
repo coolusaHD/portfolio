@@ -1,10 +1,7 @@
 import * as React from "react";
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, useTheme, createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { amber, deepOrange, grey, indigo } from '@mui/material/colors';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 import MainLayout from './components/layout';
 import CssBaseline from "@mui/material/CssBaseline";
 //import roboto font
@@ -12,8 +9,6 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { Button } from "@mui/material";
-
 
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
@@ -48,6 +43,7 @@ function App() {
                   background: {
                     default: '#fafafa',
                     toolbar: 'rgba(255, 255, 255, 0.1)',
+                    mobileDrawerMenu: 'rgba(255, 255, 255, 0.7)',
                   },
                   text: {
                     main: '#000',

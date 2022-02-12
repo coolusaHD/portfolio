@@ -1,12 +1,7 @@
-import React, { Profiler } from 'react';
-import { Container, ColoredText, ProfilePicture, ProfilePictureContainer, Description } from './style/welcomeStyle.js'
-import { Box, Link } from '@mui/material';
-import { Grid, Typography, Button } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import Tooltip from '@mui/material/Tooltip';
-import MuiLogo from '../../images/mui_logo.png';
-import ReactLogo from '../../images/react_logo.png';
-import StyledComponentsLogo from '../../images/styled-components_logo.png';
+import React from 'react';
+import { ColoredText, ProfilePicture, ProfilePictureContainer, Description } from './style/welcomeStyle.js'
+import { Grid, Typography } from '@mui/material';
+
 import { useTheme } from '@mui/material/styles';
 
 import Profile from '../../images/profile.png';
@@ -40,7 +35,7 @@ export default function Welcome(props){
 
                             <ProfilePictureContainer>
 
-                                <ProfilePicture src={Profile} alt="Profile Picture" />
+                                <ProfilePicture src={Profile} loading="lazy" alt="Profile Picture" />
 
                             </ProfilePictureContainer>
 

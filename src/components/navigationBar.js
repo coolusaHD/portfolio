@@ -3,14 +3,8 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+import CloseIcon from '@mui/icons-material/Close';
 import { Grid, Link } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import Drawer from '@mui/material/Drawer';
@@ -23,19 +17,24 @@ import { useTheme } from "@mui/styles";
 export default function NavigationBar(props){
 	
 
-	const scrollTo = (id) => {
-		console.log(id);
-		document.getElementById(id).scrollIntoView({
-			behavior: 'smooth',
-			block: 'center',
-			inline: 'center'
-		});
-	}
+	const scrollTo = props.scrollIntoView;
+	const HomeRef = props.HomeRef;
+	const AboutMeRef = props.AboutMeRef;
+	const SourceRef = props.SourceRef;
+	const ProjectsRef = props.ProjectsRef;
+
 
 	const [drawerStatus, setDrawer] = React.useState(false);
 
 
 	const theme = useTheme();
+
+	const closeDrawer = () => {
+		setTimeout(() => {
+			setDrawer(false);
+		}
+		, 300);
+	}
 
 
 
@@ -47,19 +46,19 @@ export default function NavigationBar(props){
 						<Grid item sm={3} md={6}>
 							<Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}, py: 1 , justifyContent: 'space-around' ,alignItems: 'baseline'}}>
 
-								<MenuNavItemBold onClick={()=>scrollTo('home')}>
+								<MenuNavItemBold onClick={()=>scrollTo(HomeRef)}>
 									Philipp Alber
 								</MenuNavItemBold>
 
-								<MenuNavItem onClick={()=>scrollTo('about-me')}>
+								<MenuNavItem onClick={()=>scrollTo(AboutMeRef)}>
 									Über mich
 								</MenuNavItem> 
 
-								<MenuNavItem onClick={()=>scrollTo('projects')}>
+								<MenuNavItem onClick={()=>scrollTo(ProjectsRef)}>
 									Projekte
 								</MenuNavItem>
 
-								<MenuNavItem onClick={()=>scrollTo('source')}>
+								<MenuNavItem onClick={()=>scrollTo(SourceRef)}>
 									Source
 								</MenuNavItem>
 
@@ -73,7 +72,7 @@ export default function NavigationBar(props){
 
 							<Box sx={{ flexGrow: 1, display: {xs: 'flex', md: 'none'}, py: 1, px: 2 , justifyContent: 'space-around', alignItems: 'center' }}>
 
-								<MenuNavItemBold onClick={()=>scrollTo('home')}>
+								<MenuNavItemBold onClick={()=>scrollTo(HomeRef)}>
 									Philipp Alber
 								</MenuNavItemBold>
 
@@ -106,22 +105,30 @@ export default function NavigationBar(props){
 									anchor={'top'}
 									open={drawerStatus}
 									onClose={()=>setDrawer(false)}
+									PaperProps={{style:{backgroundColor:'transparent'}}}
+									SlideProps={{easing: 'ease-in-out'}}
 								>
-									<Box>
+									<Box sx={{display: 'flex', p:2, flexDirection: 'column', alignItems: 'center', gap: 2, backdropFilter: 'blur(10px)', backgroundColor: theme.palette.background.mobileDrawerMenu}}>
 
-										<MenuNavItemBold onClick={()=>scrollTo('home')}>
+										<MenuNavItem>
+											<IconButton onClick={()=>setDrawer(false)}>
+												<CloseIcon />
+											</IconButton>
+										</MenuNavItem>
+
+										<MenuNavItemBold onClick={()=>scrollTo(HomeRef)}>
 											Philipp Alber
 										</MenuNavItemBold>
 
-										<MenuNavItem onClick={()=>scrollTo('about-me')}>
+										<MenuNavItem onClick={()=>scrollTo(AboutMeRef)}>
 											Über mich
 										</MenuNavItem> 
 
-										<MenuNavItem onClick={()=>{scrollTo('projects')}}>
+										<MenuNavItem onClick={()=>{scrollTo(ProjectsRef);}}>
 											Projekte
 										</MenuNavItem>
 
-										<MenuNavItem onClick={()=>scrollTo('source')}>
+										<MenuNavItem onClick={()=>scrollTo(SourceRef)}>
 											Source
 										</MenuNavItem>
 

@@ -30,15 +30,15 @@ export const SourceItem = styled.div`
     justify-content: flex-start;
     flex-grow: 1;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
     &:hover{
         cursor: pointer;
     }
 `;
 
 export const SourceImage = styled.img`
-    width: 5.5rem;
-    height: 5.5rem;    
+    width: 5rem;
+    height: 5rem;    
 `;
 
 export const SourceImageContainer = styled.div`
@@ -46,8 +46,8 @@ export const SourceImageContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 6.5rem;
-    width: 6.5rem;
+    height: 6rem;
+    width: 6rem;
     background-color: #fafafa ;
     border-radius: 12px;
     padding: 5px;

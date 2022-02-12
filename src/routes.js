@@ -23,14 +23,7 @@ const FallbackLoadingScreen = () => {
 
 
 export default(
-    <ErrorBoundary>
-        <Suspense fallback={FallbackLoadingScreen}>
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-            </Routes>
-            {FallbackLoadingScreen}
-        </Suspense>
-    </ErrorBoundary>
+
 )
 
 
