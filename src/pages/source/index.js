@@ -26,7 +26,7 @@ export default function Source(props){
                     <br />
 
                     <Typography align='left' variant="h5">
-                        Diese Website wurde unteranderem mit folgenden Paketen 📂 enwickelt:
+                        Diese Website wurde unter anderem mit folgenden Paketen 📂 enwickelt:
                     </Typography>
                     <Typography  variant="h5" align='left'>
                         Alle Pakete und den kompletten Quellcode findet ihr auf <Link color='inherit' href="https://github.com/coolusaHD/portfolio" target="_blank" rel="noreferrer">GitHub<OpenInNewIcon/></Link>.

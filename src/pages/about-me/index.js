@@ -30,7 +30,7 @@ export default function AboutMe(props){
                         <br />
                         <br />
                         Seit ich 16 bin, programmiere ich leidenschaftlich Websites. Mit den Jahren habe ich durch verschiedenste Projekte immer mehr
-                        Erfahrungen in Programmiersprachen und Entwicklung von Web-Applikationen gesammelt.
+                        Erfahrungen in Programmiersprachen und der Entwicklung von Web-Applikationen gesammelt.
                         <br />
                         <br />
                         Außerhalb meiner IDE findet man mich auch gerne auf dem Fussballfeld oder der Skipiste mit meinen Freunden.
