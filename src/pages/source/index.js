@@ -26,7 +26,7 @@ export default function Source(props){
                     <br />
 
                     <Typography align='left' variant="h5">
-                        Diese Website wurde mitfolgenden Paketen 📂 und Weiteren enwickelt:
+                        Diese Website wurde mit folgenden Paketen 📂 und Weiteren enwickelt:
                     </Typography>
                     <Typography  variant="h5" align='left'>
                         Alle Pakete und den kompletten Quellcode findet ihr auf <Link color='inherit' href="https://github.com/coolusaHD/portfolio" target="_blank" rel="noreferrer">GitHub<OpenInNewIcon/></Link>.
@@ -60,8 +60,8 @@ export default function Source(props){
                         <Button 
                             variant='contained' 
                             color='secondary' 
-                            startIcon={<GitHubIcon />}
-                            endIcon={<OpenInNewIcon />} 
+                            startIcon={<OpenInNewIcon />}
+                            endIcon={<GitHubIcon />}
                             onClick={()=>{window.open("https://github.com/coolusaHD/portfolio")}} 
                         >
                             Zum Github Repository

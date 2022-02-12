@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import { Grid, Link } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
-
+import Drawer from '@mui/material/Drawer';
 import { DarkModeToggle } from "react-dark-mode-toggle-2";
 
 import { MenuNavItem, MenuNavItemBold } from './style/navigationBarStyle';
@@ -32,15 +32,7 @@ export default function NavigationBar(props){
 		});
 	}
 
-	const [anchorEl, setAnchorEl] = React.useState(null);
-	const open = Boolean(anchorEl);
-	const handleClick = (event) => {
-	  setAnchorEl(event.currentTarget);
-	};
-	const handleClose = () => {
-	  setAnchorEl(null);
-	};
-
+	const [drawerStatus, setDrawer] = React.useState(false);
 
 
 	const theme = useTheme();
@@ -105,11 +97,42 @@ export default function NavigationBar(props){
 								/>
 
 								<IconButton
-									onClick={handleClick}
+									onClick={()=>setDrawer(true)}
 								>
 									<MenuIcon />
 								</IconButton>
 
+								<Drawer
+									anchor={'top'}
+									open={drawerStatus}
+									onClose={()=>setDrawer(false)}
+								>
+									<Box>
+
+										<MenuNavItemBold onClick={()=>scrollTo('home')}>
+											Philipp Alber
+										</MenuNavItemBold>
+
+										<MenuNavItem onClick={()=>scrollTo('about-me')}>
+											Über mich
+										</MenuNavItem> 
+
+										<MenuNavItem onClick={()=>{scrollTo('projects')}}>
+											Projekte
+										</MenuNavItem>
+
+										<MenuNavItem onClick={()=>scrollTo('source')}>
+											Source
+										</MenuNavItem>
+
+										<Link color='inherit' href="mailto:info@philippalber.de" underline="none">
+											<MenuNavItem>
+												Kontakt <EmailIcon />
+											</MenuNavItem>
+										</Link>
+
+									</Box>
+								</Drawer>
 								
 
 							</Box>
