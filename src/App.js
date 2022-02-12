@@ -1,6 +1,5 @@
 import * as React from "react";
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 import MainLayout from './components/layout';
 import CssBaseline from "@mui/material/CssBaseline";
@@ -78,14 +77,12 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
               <MainLayout changeColorMode={colorMode.toggleColorMode} />
           </ThemeProvider>
         </ColorModeContext.Provider>
-      </BrowserRouter>
     </div>
   );
 }

@@ -9,6 +9,7 @@ The idea behind this project is to create a small portfolio website.
 For me it was always a dream to have an own personal website to put on my CVs.
 Therefore I decided to create a react app for it and make it puvlic to motivate other developers to create their own portfolio websites.
 
+The first inspiration for this project was the Homepage of [craftzdog](https://github.com/craftzdog/craftzdog-homepage). So thank you @craftzdog!
 
 
 
@@ -17,6 +18,7 @@ Therefore I decided to create a react app for it and make it puvlic to motivate 
 - [React](https://reactjs.org)
 - [Mui](https://mui.com)
 - [Styled Components](https://styled-components.com)
+- [Haikei](https://app.haikei.app/)
   
 
     

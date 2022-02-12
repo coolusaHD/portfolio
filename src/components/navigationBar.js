@@ -23,19 +23,9 @@ export default function NavigationBar(props){
 	const SourceRef = props.SourceRef;
 	const ProjectsRef = props.ProjectsRef;
 
-
 	const [drawerStatus, setDrawer] = React.useState(false);
 
-
 	const theme = useTheme();
-
-	const closeDrawer = () => {
-		setTimeout(() => {
-			setDrawer(false);
-		}
-		, 300);
-	}
-
 
 
 	return (
