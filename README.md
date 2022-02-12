@@ -13,7 +13,7 @@ The first inspiration for this project was the Homepage of [craftzdog](https://g
 
 
 
-## `Stack`
+## 📚`Stack` 
 
 - [React](https://reactjs.org)
 - [Mui](https://mui.com)
@@ -22,7 +22,7 @@ The first inspiration for this project was the Homepage of [craftzdog](https://g
   
 
     
-## `License`
+## 📃`License` 
 
 This project is licensed under the **MIT license**.
 
@@ -31,13 +31,13 @@ You can create your own portfolio with this project under following conditions:
 - Do not use my name or my logo in your project.
 
 
-## `Contributing`
+## 🧑‍🤝‍🧑`Contributing` 
 - ME
 
 If you have any questions or suggestions, please open an issue or pull request.
 I really appreciate any feedback. Also if you find a better way to do something, do not hesitate to open a pull request and teach me how to improve this project.
 
 
-## `Thanks`
+## 🙏`Thanks` 
 Thanks to [Github](https://github.com) for the great service of hosting this project.
 Also very helpful and nice to look at is [Mui](https://mui.com) with their great UI library.
