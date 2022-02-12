@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useTheme } from '@mui/styles';
 import {SiteContent, Section, ScrollIndicator} from './style/homeStyle';
 import './style/homeStyle.css';
@@ -18,6 +18,16 @@ export default function Home(props) {
     const ProjectsRef = props.ProjectsRef;
     
     const theme = useTheme();
+
+    // eslint-disable-next-line
+    const [offset, setOffset] = useState(0);
+
+    useEffect(() => {
+        const onScroll = () => setOffset(window.pageYOffset);
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
    
 
     return(
