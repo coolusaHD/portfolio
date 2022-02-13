@@ -30,6 +30,7 @@ export default function MainLayout(props){
     let ProjectsRef = React.createRef();
 
     async function scrollTo(ref){
+        console.log('triggered')
         if (ref.current) {
             await ref.current.scrollIntoView({ 
                 behavior: 'smooth', 

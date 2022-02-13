@@ -27,6 +27,13 @@ export default function NavigationBar(props){
 
 	const theme = useTheme();
 
+	const scrollWithCloseDrawer = (ref) => {
+		setTimeout(() => {
+			scrollTo(ref);
+		}, 10);
+		setDrawer(false);
+	}
+
 
 	return (
 		<AppBar position="fixed" color="transparent" elevation={0}>
@@ -106,19 +113,19 @@ export default function NavigationBar(props){
 											</IconButton>
 										</MenuNavItem>
 
-										<MenuNavItemBold onClick={()=>scrollTo(HomeRef)}>
+										<MenuNavItemBold onClick={()=>scrollWithCloseDrawer(HomeRef)}>
 											Philipp Alber
 										</MenuNavItemBold>
 
-										<MenuNavItem onClick={()=>scrollTo(AboutMeRef)}>
+										<MenuNavItem onClick={()=>scrollWithCloseDrawer(AboutMeRef)}>
 											Über mich
 										</MenuNavItem> 
 
-										<MenuNavItem onClick={()=>{scrollTo(ProjectsRef);}}>
+										<MenuNavItem onClick={()=>{scrollWithCloseDrawer(ProjectsRef)}}>
 											Projekte
 										</MenuNavItem>
 
-										<MenuNavItem onClick={()=>scrollTo(SourceRef)}>
+										<MenuNavItem onClick={()=>scrollWithCloseDrawer(SourceRef)}>
 											Source
 										</MenuNavItem>
 
