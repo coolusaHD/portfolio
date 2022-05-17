@@ -12,37 +12,31 @@ import { DarkModeToggle } from 'react-dark-mode-toggle-2';
 
 import { MenuNavItem, MenuNavItemBold } from './style/navigationBarStyle';
 import { useTheme } from '@mui/styles';
-
-interface NavigationBarProps {
-  scrollIntoView: (element: string) => void;
-  HomeRef: React.RefObject<HTMLDivElement>;
-  AboutMeRef: React.RefObject<HTMLDivElement>;
-  SourceRef: React.RefObject<HTMLDivElement>;
-  ProjectsRef: React.RefObject<HTMLDivElement>;
-  changeColorMode: () => void;
-}
+import { useColorMode } from '../hooks/useColorMode';
+import { customTheme } from '../types/global';
+import { useScrollRefs } from '../hooks/useScrollRefs';
 
 /**
  * Render NavigationBar component
  *
  * @param {NavigationBarProps} props
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function NavigationBar(props: NavigationBarProps): React.FC {
-  const scrollTo = props.scrollIntoView;
-  const HomeRef = props.HomeRef;
-  const AboutMeRef = props.AboutMeRef;
-  const SourceRef = props.SourceRef;
-  const ProjectsRef = props.ProjectsRef;
-
+export default function NavigationBar(): React.ReactElement {
   const [drawerStatus, setDrawer] = React.useState(false);
+  const { toggleColorMode } = useColorMode();
+  const theme: customTheme = useTheme();
 
-  const theme = useTheme();
+  const { scrollTo, HomeRef, AboutMeRef, SourceRef, ProjectsRef } = useScrollRefs();
 
-  const scrollWithCloseDrawer = (ref) => {
-    setTimeout(() => {
-      scrollTo(ref);
-    }, 10);
+  const scrollWithCloseDrawer = (ref: React.RefObject<HTMLElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
     setDrawer(false);
   };
 
@@ -74,10 +68,10 @@ export default function NavigationBar(props: NavigationBarProps): React.FC {
           </Grid>
           <Grid item sm={8} md={3}>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, py: 1, justifyContent: 'space-around' }}>
-              <DarkModeToggle onChange={props.changeColorMode} isDarkMode={theme.palette.mode === 'dark'} size={50} />
+              <DarkModeToggle onChange={toggleColorMode} isDarkMode={theme.palette.mode === 'dark'} size={50} />
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, px: 1, pr: 3, justifyContent: 'flex-end', alignItems: 'center' }}>
-              <DarkModeToggle onChange={props.changeColorMode} isDarkMode={theme.palette.mode === 'dark'} size={50} />
+              <DarkModeToggle onChange={toggleColorMode} isDarkMode={theme.palette.mode === 'dark'} size={50} />
 
               <IconButton onClick={() => setDrawer(true)}>
                 <MenuIcon />

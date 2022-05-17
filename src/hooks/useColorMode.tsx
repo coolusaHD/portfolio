@@ -14,7 +14,7 @@ interface ColorModeContextProps {
 // ColorModeContext
 const colorModeContext = React.createContext<ColorModeContextProps>({
   toggleColorMode: () => {},
-  mode: 'light',
+  mode: 'dark',
   theme: {},
 });
 

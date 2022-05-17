@@ -28,7 +28,7 @@ export const mainThemeDark = {
     toolbar: 'transparent',
   },
   text: {
-    main: '#fafafa',
-    coloredSection: '#fafafa',
+    primary: '#fafafa',
+    secondary: '#fafafa',
   },
 };

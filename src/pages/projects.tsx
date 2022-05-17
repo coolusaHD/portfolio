@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProjectList, Container } from './style/projectsStyle.js';
+import { ProjectList, Container } from '../assets/styles/globalStyle';
 import { Box } from '@mui/material';
 import { Grid, Typography } from '@mui/material';
 

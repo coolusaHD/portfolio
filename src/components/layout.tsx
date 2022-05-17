@@ -3,65 +3,27 @@ import NavigationBar from './navigationBar';
 import Footer from './footer';
 import { Divider } from '@mui/material';
 import { MainSiteContent } from './style/layoutStyle';
+import ErrorFallback from '../pages/error';
+import { ErrorBoundary } from 'react-error-boundary';
 
-import ErrorBoundary from '../pages/error/index';
-import { PongSpinner } from 'react-spinners-kit';
+import { lazily } from 'react-lazily';
+import FallbackLoadingScreen from './loading';
 
-const Home = React.lazy(() => import('../pages/home/index'));
-
-const FallbackLoadingScreen = () => {
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <PongSpinner size={100} color="#319da0" loading={true} />
-    </div>
-  );
-};
-
-interface MainLayoutProps {
-  changeColorMode: () => void;
-}
+const { Home } = lazily(() => import('../pages'));
 
 /**
  *
  * @param {MainLayoutProps} props
- * @return {React.Element}
+ * @return {React.ReactElement}
  */
-export default function MainLayout(props: MainLayoutProps): React.Element {
-  const HomeRef = React.createRef();
-  const AboutMeRef = React.createRef();
-  const SourceRef = React.createRef();
-  const ProjectsRef = React.createRef();
-
-  /**
-   * Scroll to the given ref
-   *
-   * @param {React.RefObject} ref
-   */
-  async function scrollTo(ref: React.Ref<T>) {
-    console.log('triggered');
-    if (ref.current) {
-      await ref.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
-    }
-  }
-
+export default function MainLayout(): React.ReactElement {
   return (
     <MainSiteContent>
-      <NavigationBar
-        changeColorMode={props.changeColorMode}
-        HomeRef={HomeRef}
-        AboutMeRef={AboutMeRef}
-        SourceRef={SourceRef}
-        ProjectsRef={ProjectsRef}
-        scrollIntoView={scrollTo}
-      />
+      <NavigationBar />
 
-      <ErrorBoundary>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<FallbackLoadingScreen />}>
-          <Home HomeRef={HomeRef} AboutMeRef={AboutMeRef} SourceRef={SourceRef} ProjectsRef={ProjectsRef} />
+          <Home />
         </Suspense>
       </ErrorBoundary>
 

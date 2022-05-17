@@ -1,36 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '@mui/styles';
-import { SiteContent, Section, ScrollIndicator } from './style/homeStyle';
-import './style/homeStyle.css';
+import { SiteContent, Section, ScrollIndicator } from '../assets/styles/globalStyle';
+import '../assets/styles/background.css';
+import { lazily } from 'react-lazily';
+import { useScrollRefs } from '../hooks/useScrollRefs';
+import { customTheme } from '../types/global';
 
-import AboutMe from '../about-me/index';
-import Source from '../source/index';
-import Projects from '../projects/index';
-import Welcome from '../welcome/index';
-
-interface HomeProps {
-  HomeRef: React.Ref<HTMLDivElement>;
-  AboutMeRef: React.Ref<HTMLDivElement>;
-  SourceRef: React.Ref<HTMLDivElement>;
-  ProjectsRef: React.Ref<HTMLDivElement>;
-  changeColorMode: () => void;
-}
+const { AboutMe, Source, Projects, Welcome } = lazily(() => import('../pages'));
 
 /**
+ *  Render Home Component
  *
- * @param {HomeProps} props
  * @return {React.ReactElement}
  */
-export default function Home(props: HomeProps): React.ReactElement {
-  const HomeRef = props.HomeRef;
-  const AboutMeRef = props.AboutMeRef;
-  const SourceRef = props.SourceRef;
-  const ProjectsRef = props.ProjectsRef;
-
-  const theme = useTheme();
+export default function Home(): React.ReactElement {
+  const theme: customTheme = useTheme();
 
   // eslint-disable-next-line
   const [offset, setOffset] = useState(0);
+
+  const { HomeRef, AboutMeRef, SourceRef, ProjectsRef } = useScrollRefs();
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
