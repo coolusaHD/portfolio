@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import NavigationBar from '../components/navigationBar';
+import NavigationBar from './navigationBar';
 import Footer from './footer';
 import { Divider } from '@mui/material';
 import { MainSiteContent } from './style/layoutStyle';
@@ -24,18 +24,13 @@ interface MainLayoutProps {
 /**
  *
  * @param {MainLayoutProps} props
- * @return {React.ReactElement}
+ * @return {React.Element}
  */
-export default function MainLayout(props: MainLayoutProps): React.FC<MainLayoutProps> {
+export default function MainLayout(props: MainLayoutProps): React.Element {
   const HomeRef = React.createRef();
   const AboutMeRef = React.createRef();
   const SourceRef = React.createRef();
   const ProjectsRef = React.createRef();
-
-  let HomeRef = React.createRef();
-  let AboutMeRef = React.createRef();
-  let SourceRef = React.createRef();
-  let ProjectsRef = React.createRef();
 
   /**
    * Scroll to the given ref

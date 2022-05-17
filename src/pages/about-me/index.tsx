@@ -6,9 +6,9 @@ import { Grid, Typography } from '@mui/material';
 /**
  * Render AboutMe component
  *
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function AboutMe() {
+export default function AboutMe(): React.ReactElement {
   const age = new Date().getFullYear() - 2001;
 
   return (

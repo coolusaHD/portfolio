@@ -12,9 +12,9 @@ import StyledComponentsLogo from '../../images/styled-components_logo.png';
 /**
  * Render Source component
  *
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function Source(): React.FC {
+export default function Source(): React.ReactElement {
   return (
     <Grid container spacing={3}>
       <Grid item xs={1} md={3} />

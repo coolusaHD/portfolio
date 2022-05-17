@@ -9,9 +9,9 @@ import Profile from '../../images/profile.png';
 /**
  * Welcome Component
  *
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function Welcome(): React.FC {
+export default function Welcome(): React.ReactElement {
   const theme = useTheme();
 
   return (

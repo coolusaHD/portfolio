@@ -11,9 +11,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 /**
  * Render Projects component
  *
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function Projects(): React.FC {
+export default function Projects(): React.ReactElement {
   return (
     <Grid container spacing={3}>
       <Grid item xs={1} md={3} />

@@ -5,10 +5,10 @@ import { Grid } from '@mui/material';
 
 /**
  * Render Footer component
- * @return {React.FC}
+ * @return {React.Element}
  *
  */
-export default function Footer(): React.FC {
+export default function Footer(): React.Element {
   const currentYear = new Date().getFullYear();
 
   return (

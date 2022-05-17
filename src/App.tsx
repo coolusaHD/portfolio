@@ -8,16 +8,17 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { PaletteMode } from '@mui/material';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 /**
  * App main component
  *
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function App(): React.FC {
-  const [mode, setMode] = React.useState('dark');
+export default function App(): React.ReactElement {
+  const [mode, setMode] = React.useState<PaletteMode>('dark');
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -47,7 +48,7 @@ export default function App(): React.FC {
                   mobileDrawerMenu: 'rgba(255, 255, 255, 0.7)',
                 },
                 text: {
-                  main: '#000',
+                  main: '#000000',
                   coloredSection: '#fafafa',
                 },
               }

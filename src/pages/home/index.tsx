@@ -9,19 +9,19 @@ import Projects from '../projects/index';
 import Welcome from '../welcome/index';
 
 interface HomeProps {
-  HomeRef: React.RefObject<HTMLDivElement>;
-  AboutMeRef: React.RefObject<HTMLDivElement>;
-  SourceRef: React.RefObject<HTMLDivElement>;
-  ProjectsRef: React.RefObject<HTMLDivElement>;
+  HomeRef: React.Ref<HTMLDivElement>;
+  AboutMeRef: React.Ref<HTMLDivElement>;
+  SourceRef: React.Ref<HTMLDivElement>;
+  ProjectsRef: React.Ref<HTMLDivElement>;
   changeColorMode: () => void;
 }
 
 /**
  *
  * @param {HomeProps} props
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function Home(props: HomeProps): React.FC {
+export default function Home(props: HomeProps): React.ReactElement {
   const HomeRef = props.HomeRef;
   const AboutMeRef = props.AboutMeRef;
   const SourceRef = props.SourceRef;
