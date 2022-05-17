@@ -32,11 +32,18 @@ export default function MainLayout(props: MainLayoutProps): React.FC<MainLayoutP
   const SourceRef = React.createRef();
   const ProjectsRef = React.createRef();
 
+  let HomeRef = React.createRef();
+  let AboutMeRef = React.createRef();
+  let SourceRef = React.createRef();
+  let ProjectsRef = React.createRef();
+
   /**
-   * It scrolls to the element that is passed in as a ref
-   * @param {React.Ref} ref - The ref of the element you want to scroll to.
+   * Scroll to the given ref
+   *
+   * @param {React.RefObject} ref
    */
   async function scrollTo(ref) {
+    console.log('triggered');
     if (ref.current) {
       await ref.current.scrollIntoView({
         behavior: 'smooth',

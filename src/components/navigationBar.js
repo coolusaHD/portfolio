@@ -39,6 +39,13 @@ export default function NavigationBar(props: NavigationBarProps): React.FC {
 
   const theme = useTheme();
 
+  const scrollWithCloseDrawer = (ref) => {
+    setTimeout(() => {
+      scrollTo(ref);
+    }, 10);
+    setDrawer(false);
+  };
+
   return (
     <AppBar position="fixed" color="transparent" elevation={0}>
       <Toolbar disableGutters sx={{ backdropFilter: 'blur(10px)', backgroundColor: theme.palette.background.toolbar }}>
@@ -100,19 +107,19 @@ export default function NavigationBar(props: NavigationBarProps): React.FC {
                     </IconButton>
                   </MenuNavItem>
 
-                  <MenuNavItemBold onClick={() => scrollTo(HomeRef)}>Philipp Alber</MenuNavItemBold>
+                  <MenuNavItemBold onClick={() => scrollWithCloseDrawer(HomeRef)}>Philipp Alber</MenuNavItemBold>
 
-                  <MenuNavItem onClick={() => scrollTo(AboutMeRef)}>Über mich</MenuNavItem>
+                  <MenuNavItem onClick={() => scrollWithCloseDrawer(AboutMeRef)}>Über mich</MenuNavItem>
 
                   <MenuNavItem
                     onClick={() => {
-                      scrollTo(ProjectsRef);
+                      scrollWithCloseDrawer(ProjectsRef);
                     }}
                   >
                     Projekte
                   </MenuNavItem>
 
-                  <MenuNavItem onClick={() => scrollTo(SourceRef)}>Source</MenuNavItem>
+                  <MenuNavItem onClick={() => scrollWithCloseDrawer(SourceRef)}>Source</MenuNavItem>
 
                   <Link color="inherit" href="mailto:info@philippalber.de" underline="none">
                     <MenuNavItem>
