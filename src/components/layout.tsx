@@ -37,7 +37,7 @@ export default function MainLayout(props: MainLayoutProps): React.Element {
    *
    * @param {React.RefObject} ref
    */
-  async function scrollTo(ref) {
+  async function scrollTo(ref: React.Ref<T>) {
     console.log('triggered');
     if (ref.current) {
       await ref.current.scrollIntoView({
