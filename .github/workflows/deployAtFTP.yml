@@ -1,9 +1,6 @@
 on:
   push:
-    branches: [ main ]
-
-env:
-  CI: false
+    branches: [main]
 
 name: 🚀 Deploy website on push
 jobs:
@@ -11,23 +8,29 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
 
-    - name: Use Node.js 16
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-      
-    - name: 🔨 Build Project
-      run: |
-        npm install
-        npm run build
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.2.0
-      with:
-        server: ${{ secrets.FTP_SERVER_ADRESS }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-   
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: Check code style
+        run: |
+          npm run lint
+          npm run prettier-check
+
+      - name: 🔨 Build Project
+        run: |
+          npm run build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: ${{ secrets.FTP_SERVER_ADRESS }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
