@@ -29,15 +29,9 @@ export default function NavigationBar(): React.ReactElement {
 
   const { scrollTo, HomeRef, AboutMeRef, SourceRef, ProjectsRef } = useScrollRefs();
 
-  const scrollWithCloseDrawer = (ref: React.RefObject<HTMLElement>) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
-    }
-    setDrawer(false);
+  const scrollWithCloseDrawer = async (ref: React.RefObject<HTMLElement>) => {
+    await setDrawer(false);
+    await scrollTo(ref);
   };
 
   return (
@@ -105,13 +99,7 @@ export default function NavigationBar(): React.ReactElement {
 
                   <MenuNavItem onClick={() => scrollWithCloseDrawer(AboutMeRef)}>Über mich</MenuNavItem>
 
-                  <MenuNavItem
-                    onClick={() => {
-                      scrollWithCloseDrawer(ProjectsRef);
-                    }}
-                  >
-                    Projekte
-                  </MenuNavItem>
+                  <MenuNavItem onClick={() => scrollWithCloseDrawer(ProjectsRef)}>Projekte</MenuNavItem>
 
                   <MenuNavItem onClick={() => scrollWithCloseDrawer(SourceRef)}>Source</MenuNavItem>
 

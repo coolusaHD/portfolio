@@ -7,10 +7,9 @@ export const useScrollRefs = create(() => ({
   SourceRef: React.createRef<HTMLDivElement>(),
   ProjectsRef: React.createRef<HTMLDivElement>(),
 
-  scrollTo(ref: any) {
-    console.log('triggered');
+  async scrollTo(ref: any) {
     if (ref.current) {
-      ref.current.scrollIntoView({
+      await ref.current.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
         inline: 'center',
