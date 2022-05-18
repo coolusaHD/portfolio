@@ -1,20 +1,20 @@
 import React from 'react';
-import { Container, Description, SourceItem, SourceImage, SourceImageContainer } from './style/sourceStyle.js';
+import { Container, SourceDescription, SourceItem, SourceImage, SourceImageContainer } from '../assets/styles/globalStyle';
 import { Link } from '@mui/material';
 import { Grid, Typography, Button } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Tooltip from '@mui/material/Tooltip';
-import MuiLogo from '../../images/mui_logo.png';
-import ReactLogo from '../../images/react_logo.png';
-import StyledComponentsLogo from '../../images/styled-components_logo.png';
+import MuiLogo from '../assets/images/mui_logo.png';
+import ReactLogo from '../assets/images/react_logo.png';
+import StyledComponentsLogo from '../assets/images/styled-components_logo.png';
 
 /**
  * Render Source component
  *
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function Source(): React.FC {
+export default function Source(): React.ReactElement {
   return (
     <Grid container spacing={3}>
       <Grid item xs={1} md={3} />
@@ -39,7 +39,7 @@ export default function Source(): React.FC {
           <br />
           <br />
 
-          <Description>
+          <SourceDescription>
             <SourceItem>
               <Tooltip title="React" arrow placement="top">
                 <SourceImageContainer
@@ -83,7 +83,7 @@ export default function Source(): React.FC {
             >
               Zum Github Repository
             </Button>
-          </Description>
+          </SourceDescription>
         </Container>
       </Grid>
 

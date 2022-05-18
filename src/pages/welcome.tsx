@@ -1,17 +1,17 @@
 import React from 'react';
-import { ColoredText, ProfilePicture, ProfilePictureContainer, Description } from './style/welcomeStyle.js';
+import { ColoredText, ProfilePicture, ProfilePictureContainer, ProfileDescription } from '../assets/styles/globalStyle';
 import { Grid, Typography } from '@mui/material';
 
 import { useTheme } from '@mui/material/styles';
 
-import Profile from '../../images/profile.png';
+import Profile from '../assets/images/profile.png';
 
 /**
  * Welcome Component
  *
- * @return {React.FC}
+ * @return {React.ReactElement}
  */
-export default function Welcome(): React.FC {
+export default function Welcome(): React.ReactElement {
   const theme = useTheme();
 
   return (
@@ -37,9 +37,9 @@ export default function Welcome(): React.FC {
           </Grid>
 
           <Grid item xs={12} md={8} sx={{ p: 2, mt: { xs: 0, md: 10 } }}>
-            <Description>
+            <ProfileDescription>
               Full-Stack Developer, <br /> UI/UX Designer und Web-Entwickler
-            </Description>
+            </ProfileDescription>
           </Grid>
         </Grid>
       </Grid>
