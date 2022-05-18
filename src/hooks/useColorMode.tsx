@@ -46,7 +46,7 @@ export const useColorMode = () => {
  */
 function useProvideColorMode(): ColorModeContextProps {
   // theme state
-  const [mode, setMode] = React.useState<PaletteMode>('light');
+  const [mode, setMode] = React.useState<PaletteMode>('dark');
 
   const toggleColorMode = React.useCallback(() => {
     setMode((prevMode: PaletteMode) => {

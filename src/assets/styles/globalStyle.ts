@@ -25,14 +25,13 @@ export const SiteContent = styled.div`
   justify-content: flex-start;
 `;
 
-interface ScrollIndicatorProps {
-  readonly bg: string;
+interface SectionProps {
+  readonly backgroundColor: string;
   readonly color: string;
-  readonly ref: any;
 }
 
-export const Section = styled.div<ScrollIndicatorProps>`
-  background-color: ${(props) => props.bg};
+export const Section = styled.div<SectionProps>`
+  background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   min-height: 200px;
   padding: 20px 10px;

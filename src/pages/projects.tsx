@@ -50,16 +50,16 @@ export default function Projects(): React.ReactElement {
               </Accordion>
               <Accordion>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h6">Heuberg Live Ticker App & Manager </Typography>
+                  <Typography variant="h6">Heuberger Live Ticker App & Manager </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    Die Heuberg Live Ticker App ist, wie der Name schon sagt, eine Liver-Ticker App für das Lokale Fussballtunier auf dem Heuberg. Der Manager agiert
+                    Die Heuberger Live Ticker App ist, wie der Name schon sagt, eine Liver-Ticker App für das lokale Fussballtunier auf dem Heuberg. Der Manager agiert
                     dabei als Tunierleitungssoftware und verwaltet alle Daten, welche von den Gästen mit Hilfe der App abgerufen werden können.
                   </Typography>
                   <br />
                   <Typography color="primary" align="right" variant="caption">
-                    (JS, REACT, REACT Native, Express, MongoDB)
+                    (TS, REACT, REACT Native, Express, MongoDB)
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -74,7 +74,7 @@ export default function Projects(): React.ReactElement {
                   </Typography>
                   <br />
                   <Typography color="primary" align="right" variant="caption">
-                    (JS, REACT)
+                    (TS, REACT)
                   </Typography>
                 </AccordionDetails>
               </Accordion>

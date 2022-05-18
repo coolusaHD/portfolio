@@ -30,7 +30,7 @@ export default function Home(): React.ReactElement {
 
   return (
     <SiteContent>
-      <Section ref={HomeRef} id="home" bg={theme.palette.background.default}>
+      <Section ref={HomeRef} id="home" backgroundColor={theme.palette.background.default} color={theme.palette.text.primary}>
         <Welcome />
       </Section>
 
@@ -38,21 +38,19 @@ export default function Home(): React.ReactElement {
 
       <div className="spacer layer3"></div>
 
-      <Section ref={AboutMeRef} id="about-me" bg={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
-        {/* <AboutMe /> */}
+      <Section ref={AboutMeRef} id="about-me" backgroundColor={theme.palette.secondary.main} color={theme.palette.text.coloredSection}>
         <AboutMe />
       </Section>
 
       <div className="spacer layer4"></div>
 
-      <Section ref={ProjectsRef} id="projects" bg={theme.palette.background.default}>
+      <Section ref={ProjectsRef} id="projects" backgroundColor={theme.palette.background.default} color={theme.palette.text.primary}>
         <Projects />
       </Section>
 
       <div className="spacer layer1"></div>
 
-      <Section ref={SourceRef} id="source" bg={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
-        {/* <Source /> */}
+      <Section ref={SourceRef} id="source" backgroundColor={theme.palette.primary.main} color={theme.palette.text.coloredSection}>
         <Source />
       </Section>
 
