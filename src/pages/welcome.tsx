@@ -22,7 +22,7 @@ export default function Welcome(): React.ReactElement {
         <Typography variant="h1">Willkommen</Typography>
 
         <Typography align="right" variant="h2">
-          auf meinem <ColoredText color={theme.palette.secondary.main}>Portfolio</ColoredText>
+          zu meinem <ColoredText color={theme.palette.secondary.main}>Portfolio</ColoredText>
         </Typography>
 
         <Typography color="primary" align="right" variant="h6" sx={{ fontWeight: '300' }}>
@@ -37,7 +37,7 @@ export default function Welcome(): React.ReactElement {
           </Grid>
 
           <Grid item xs={12} md={8} sx={{ p: 2, mt: { xs: 0, md: 10 } }}>
-            <ProfileDescription>
+            <ProfileDescription data-aos="fade-up" data-aos-delay="1500" data-aos-duration="500">
               Full-Stack Developer, <br /> UI/UX Designer und Web-Entwickler
             </ProfileDescription>
           </Grid>

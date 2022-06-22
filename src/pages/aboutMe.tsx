@@ -16,7 +16,7 @@ export default function AboutMe(): React.ReactElement {
       <Grid item xs={1} md={3} />
 
       <Grid item xs={10} md={6}>
-        <AboutMeContainer>
+        <AboutMeContainer data-aos="fade-up" data-aos-duration="500">
           <Typography variant="h2">Über mich:</Typography>
 
           <br />

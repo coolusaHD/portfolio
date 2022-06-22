@@ -19,6 +19,7 @@ The first inspiration for this project was the Homepage of [craftzdog](https://g
 - [Mui](https://mui.com)
 - [Styled Components](https://styled-components.com)
 - [Haikei](https://app.haikei.app/)
+- [AOS](https://github.com/michalsnik/aos)
 
 ## 📃`License`
 
@@ -36,7 +37,13 @@ You can create your own portfolio with this project under following conditions:
 If you have any questions or suggestions, please open an issue or pull request.
 I really appreciate any feedback. Also if you find a better way to do something, do not hesitate to open a pull request and teach me how to improve this project.
 
-## 🙏`Thanks`
+## ✨`Inspriations`
 
-Thanks to [Github](https://github.com) for the great service of hosting this project.
-Also very helpful and nice to look at is [Mui](https://mui.com) with their great UI library.
+- [craftzdog](https://github.com/craftzdog/craftzdog-homepage)
+- [gazi](https://github.com/gazijarin/Gazi)
+
+## 🙏`Thanks to`
+
+- [Github](https://github.com) for the great service of hosting this project.
+- [Mui](https://mui.com) for their great UI library.
+- [michalsnik](https://github.com/michalsnik/aos) for the amazing library that makes the animations work.
