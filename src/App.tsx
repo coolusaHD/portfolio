@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 // init AOS for animations
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 AOS.init();
 
 // import roboto font
