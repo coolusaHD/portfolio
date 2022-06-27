@@ -20,7 +20,7 @@ export default function Source(): React.ReactElement {
       <Grid item xs={1} md={3} />
 
       <Grid item xs={10} md={6}>
-        <Container>
+        <Container data-aos="fade-up" data-aos-duration="500">
           <Typography variant="h2">Source Pakete</Typography>
 
           <br />

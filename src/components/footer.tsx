@@ -16,7 +16,8 @@ export default function Footer(): React.ReactElement {
       <Grid container spacing={4}>
         <Grid item sm={1} md={3} />
         <Grid item sm={10} md={6}>
-          <Box sx={{ display: 'flex', py: 1, justifyContent: 'center', alignItems: 'baseline', gap: 1 }}>© {currentYear} Philipp Alber | All Rights Reserved.</Box>
+          <Box sx={{ display: 'flex', py: 1, justifyContent: 'center', alignItems: 'baseline', gap: 1 }}>Built and designed by Philipp Alber</Box>
+          <Box sx={{ display: 'flex', py: 1, justifyContent: 'center', alignItems: 'baseline', gap: 1 }}>© {currentYear} All Rights Reserved.</Box>
         </Grid>
         <Grid item sm={1} md={3} />
       </Grid>

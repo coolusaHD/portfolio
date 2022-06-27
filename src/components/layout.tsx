@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import NavigationBar from './navigationBar';
 import Footer from './footer';
-import { Divider } from '@mui/material';
 import { MainSiteContent } from './style/layoutStyle';
 import ErrorFallback from '../pages/error';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -26,8 +25,6 @@ export default function MainLayout(): React.ReactElement {
           <Home />
         </Suspense>
       </ErrorBoundary>
-
-      <Divider flexItem variant="middle" />
 
       <Footer />
     </MainSiteContent>
