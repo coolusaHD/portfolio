@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const AboutMeContainer = styled.div`
   display: flex;
@@ -74,6 +73,7 @@ export const ScrollIndicator = styled.div<ScrollIndicatorProps>`
   margin-top: -0.7rem;
   box-shadow: 0px 0px 1px ${(props) => props.color};
   border-radius: 525px;
+  border: 1px solid ${(props) => props.color};
   position: fixed;
   left: 50%;
   top: 90%;
