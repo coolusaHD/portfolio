@@ -1,5 +1,4 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import 'dotenv';
 import * as React from 'react';
 import './App.css';
 import MainLayout from './components/layout';
