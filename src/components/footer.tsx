@@ -1,7 +1,5 @@
+import { Box, Grid, Toolbar } from '@mui/material';
 import React from 'react';
-import { Box } from '@mui/material';
-import { Toolbar } from '@mui/material';
-import { Grid } from '@mui/material';
 
 /**
  * Render Footer component
@@ -13,13 +11,13 @@ export default function Footer(): React.ReactElement {
 
   return (
     <Toolbar variant="dense">
-      <Grid container spacing={4}>
-        <Grid item sm={1} md={3} />
-        <Grid item sm={10} md={6}>
+      <Grid container spacing={1}>
+        <Grid item xs={1} md={3} />
+        <Grid item xs={10} md={6}>
           <Box sx={{ display: 'flex', py: 1, justifyContent: 'center', alignItems: 'baseline', gap: 1 }}>Built and designed by Philipp Alber</Box>
           <Box sx={{ display: 'flex', py: 1, justifyContent: 'center', alignItems: 'baseline', gap: 1 }}>© {currentYear} All Rights Reserved.</Box>
         </Grid>
-        <Grid item sm={1} md={3} />
+        <Grid item xs={1} md={3} />
       </Grid>
     </Toolbar>
   );

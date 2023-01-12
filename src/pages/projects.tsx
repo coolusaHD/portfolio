@@ -119,7 +119,7 @@ export default function Projects(): React.ReactElement {
                       <Typography variant="h6">{project.title}</Typography>
                       <Box>
                         {project.private && (
-                          <IconButton>
+                          <IconButton disabled>
                             <LockIcon />
                           </IconButton>
                         )}

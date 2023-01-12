@@ -17,6 +17,8 @@ import { customTheme } from '../types/global';
 import { LanguagesSwitch } from './languages';
 import { MenuNavItem, MenuNavItemBold } from './style/navigationBarStyle';
 
+import PaLogo from '../assets/images/pa_logo.svg';
+
 /**
  * Render NavigationBar component
  *
@@ -40,11 +42,18 @@ export default function NavigationBar(): React.ReactElement {
   return (
     <AppBar position="fixed" color="transparent" elevation={0}>
       <Toolbar disableGutters sx={{ backdropFilter: 'blur(10px)', backgroundColor: theme.palette.background.toolbar }}>
-        <Grid container spacing={1} sx={{ justifyContent: { xs: 'space-between', md: 'center' } }}>
-          <Grid item sm={1} md={3} />
-          <Grid item sm={3} md={6}>
+        <Grid container spacing={1} sx={{ justifyContent: { xs: 'flex-start', md: 'center' } }}>
+          {/* Spacer */}
+          <Grid item xs={1} sm={2} />
+
+          {/* Middle Section */}
+          <Grid item xs={4} sm={8}>
+            {/* Desktop */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, py: 1, justifyContent: 'space-around', alignItems: 'center' }}>
-              <MenuNavItemBold onClick={() => scrollTo(HomeRef)}>Philipp Alber</MenuNavItemBold>
+              <MenuNavItemBold onClick={() => scrollTo(HomeRef)}>
+                <img src={PaLogo} alt="PA Logo" style={{ width: '2rem' }} />
+                Philipp Alber
+              </MenuNavItemBold>
 
               <MenuNavItem onClick={() => scrollTo(AboutMeRef)}>{t('nav.about-me')}</MenuNavItem>
 
@@ -59,11 +68,16 @@ export default function NavigationBar(): React.ReactElement {
               </Link>
             </Box>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, py: 1, px: 2, justifyContent: 'space-around', alignItems: 'center' }}>
-              <MenuNavItemBold onClick={() => scrollTo(HomeRef)}>Philipp Alber</MenuNavItemBold>
+            {/* Mobile */}
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, py: 1, px: 2, justifyContent: 'flex-start', alignItems: 'center', width: 'fill-available' }}>
+              <MenuNavItemBold onClick={() => scrollTo(HomeRef)}>
+                <img src={PaLogo} alt="PA Logo" style={{ width: '2rem' }} />
+              </MenuNavItemBold>
             </Box>
           </Grid>
-          <Grid item sm={8} md={3}>
+
+          {/* Right Section */}
+          <Grid item xs={7} sm={2}>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, py: 1, gap: 2, alignItems: 'center' }}>
               <DarkModeToggle onChange={toggleColorMode} isDarkMode={theme.palette.mode === 'dark'} size={50} />
               <LanguagesSwitch />
@@ -76,6 +90,7 @@ export default function NavigationBar(): React.ReactElement {
                 <MenuIcon />
               </IconButton>
 
+              {/* Top Drawer Menu */}
               <Drawer
                 anchor={'top'}
                 open={drawerStatus}
@@ -100,7 +115,10 @@ export default function NavigationBar(): React.ReactElement {
                     </IconButton>
                   </MenuNavItem>
 
-                  <MenuNavItemBold onClick={() => scrollWithCloseDrawer(HomeRef)}>Philipp Alber</MenuNavItemBold>
+                  <MenuNavItemBold onClick={() => scrollWithCloseDrawer(HomeRef)}>
+                    <img src={PaLogo} alt="PA Logo" style={{ width: '2rem' }} />
+                    Philipp Alber
+                  </MenuNavItemBold>
 
                   <MenuNavItem onClick={() => scrollWithCloseDrawer(AboutMeRef)}>{t('nav.about-me')}</MenuNavItem>
 

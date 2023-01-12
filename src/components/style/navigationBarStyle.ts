@@ -11,6 +11,9 @@ export const MenuNavItem = styled.div`
 `;
 
 export const MenuNavItemBold = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: bold;
   font-size: 1.2em;
   text-decoration: none;
