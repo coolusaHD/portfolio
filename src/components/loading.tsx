@@ -1,5 +1,5 @@
 import React from 'react';
-import { PongSpinner } from 'react-spinners-kit';
+import { CubeSpinner } from 'react-spinners-kit';
 /**
  * Render Laoding Component
  *
@@ -8,7 +8,7 @@ import { PongSpinner } from 'react-spinners-kit';
 export default function FallbackLoadingScreen(): React.ReactElement {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <PongSpinner size={100} color="#319da0" loading={true} />
+      <CubeSpinner size={150} frontColor="#319da0" backColor="#000" loading={true} />
     </div>
   );
 }

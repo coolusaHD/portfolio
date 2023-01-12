@@ -1,7 +1,7 @@
+import { Grid, Link, Typography } from '@mui/material';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { AboutMeContainer, AboutMeDescription } from '../assets/styles/globalStyle';
-import { Link } from '@mui/material';
-import { Grid, Typography } from '@mui/material';
 
 /**
  * Render AboutMe component
@@ -10,6 +10,7 @@ import { Grid, Typography } from '@mui/material';
  */
 export default function AboutMe(): React.ReactElement {
   const age = new Date().getFullYear() - 2001;
+  const { t } = useTranslation();
 
   return (
     <Grid container spacing={3}>
@@ -17,24 +18,23 @@ export default function AboutMe(): React.ReactElement {
 
       <Grid item xs={10} md={6}>
         <AboutMeContainer data-aos="fade-up" data-aos-duration="500">
-          <Typography variant="h2">Über mich:</Typography>
+          <Typography variant="h2">{t('about-me.title')}</Typography>
 
           <br />
 
-          <Typography variant="h5">Hallo 👋 Ich bin Philipp</Typography>
+          <Typography variant="h5">{t('about-me.introduction')}</Typography>
           <AboutMeDescription>
-            Ich bin {age} Jahre alt und studiere Informatik an der{' '}
+            {t('about-me.age', { age })}
             <Link color="inherit" href="https://uni-tuebingen.de/" underline="always">
-              Eberhard Karls Universität
-            </Link>{' '}
-            in Tübingen.
+              {t('about-me.uni')}
+            </Link>
+            {t('about-me.uni.location')}
             <br />
             <br />
-            Seit ich 16 bin, programmiere ich leidenschaftlich Websites. Mit den Jahren habe ich durch verschiedenste Projekte immer mehr Erfahrungen in
-            Programmiersprachen und der Entwicklung von Web-Applikationen gesammelt.
+            {t('about-me.description1')}
             <br />
             <br />
-            Außerhalb meiner IDE findet man mich auch gerne auf dem Fussballfeld oder der Skipiste mit meinen Freunden.
+            {t('about-me.description2')}
           </AboutMeDescription>
         </AboutMeContainer>
       </Grid>
