@@ -1,8 +1,8 @@
-import React from 'react';
-import { ColoredText, ProfilePicture, ProfilePictureContainer, ProfileDescription } from '../assets/styles/globalStyle';
 import { Grid, Typography } from '@mui/material';
-
 import { useTheme } from '@mui/material/styles';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { ColoredText, ProfileDescription, ProfilePicture, ProfilePictureContainer } from '../assets/styles/globalStyle';
 
 import Profile from '../assets/images/profile.png';
 
@@ -13,20 +13,21 @@ import Profile from '../assets/images/profile.png';
  */
 export default function Welcome(): React.ReactElement {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <Grid container spacing={3}>
       <Grid item xs={1} md={3} />
 
       <Grid item xs={10} md={6}>
-        <Typography variant="h1">Willkommen</Typography>
+        <Typography variant="h1">{t('welcome.title')}</Typography>
 
         <Typography align="right" variant="h2">
-          zu meinem <ColoredText color={theme.palette.secondary.main}>Portfolio</ColoredText>
+          {t('welcome.title2.1')} <ColoredText color={theme.palette.secondary.main}>{t('welcome.title2.2')}</ColoredText>
         </Typography>
 
         <Typography color="primary" align="right" variant="h6" sx={{ fontWeight: '300' }}>
-          by Philipp Alber
+          {t('welcome.title.author')}
         </Typography>
 
         <Grid container spacing={3}>
@@ -38,7 +39,7 @@ export default function Welcome(): React.ReactElement {
 
           <Grid item xs={12} md={8} sx={{ p: 2, mt: { xs: 0, md: 10 } }}>
             <ProfileDescription data-aos="fade-up" data-aos-delay="1500" data-aos-duration="500">
-              Full-Stack Developer, <br /> UI/UX Designer und Web-Entwickler
+              {t('welcome.subtitle.job1')}, <br /> {t('welcome.subtitle.job2')}
             </ProfileDescription>
           </Grid>
         </Grid>
