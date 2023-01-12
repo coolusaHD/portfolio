@@ -39,7 +39,7 @@ export default function Welcome(): React.ReactElement {
 
           <Grid item xs={12} md={8} sx={{ p: 2, mt: { xs: 0, md: 10 } }}>
             <ProfileDescription data-aos="fade-up" data-aos-delay="1500" data-aos-duration="500">
-              {t('welcome.subtitle.job1')}, <br /> {t('welcome.subtitle.job2')}
+              {t('welcome.subtitle.job1')}
             </ProfileDescription>
           </Grid>
         </Grid>

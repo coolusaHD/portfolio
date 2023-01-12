@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTheme } from '@mui/styles';
+import { useTheme } from '@mui/material/styles';
 import { SiteContent, Section, ScrollIndicator } from '../assets/styles/globalStyle';
 import '../assets/styles/background.css';
 import { lazily } from 'react-lazily';

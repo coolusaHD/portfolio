@@ -7,10 +7,9 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
+import { useTheme } from '@mui/material/styles';
 import React from 'react';
 import { DarkModeToggle } from 'react-dark-mode-toggle-2';
-
-import { useTheme } from '@mui/styles';
 import { useTranslation } from 'react-i18next';
 import { useColorMode } from '../hooks/useColorMode';
 import { useScrollRefs } from '../hooks/useScrollRefs';
