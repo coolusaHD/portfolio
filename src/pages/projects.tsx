@@ -1,5 +1,4 @@
 import { Box, Divider, Grid, IconButton, Typography } from '@mui/material';
-import React from 'react';
 import { Container, ProjectList } from '../assets/styles/globalStyle';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -10,6 +9,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import { t } from 'i18next';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface ProjectDetails {
@@ -39,7 +39,7 @@ const projects: ProjectDetails[] = [
     repoLink: null,
     private: true,
     languages: ['TS'],
-    frameworks: ['React', 'React Native', 'Express', 'MongoDB'],
+    frameworks: ['React', 'Flutter', 'Supabase'],
   },
   {
     title: t('projects.portfolio.title'),
