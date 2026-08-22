@@ -6,9 +6,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const facts = [
-  { icon: 'school', label: t('about.fact.study') },
   { icon: 'shield', label: t('about.fact.work') },
-  { icon: 'rocket', label: t('about.fact.founder') },
+  { icon: 'rocket', label: t('about.fact.phd') },
+  { icon: 'school', label: t('about.fact.study') },
+  { icon: 'briefcase', label: t('about.fact.founder') },
+  { icon: 'globe', label: t('about.fact.languages') },
   { icon: 'map-pin', label: t('about.fact.location') },
 ] as const;
 ---

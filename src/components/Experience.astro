@@ -1,9 +1,15 @@
 ---
-import { experience } from '../data/profile';
+import Icon from './Icon.astro';
+import { career, education, type TimelineItem } from '../data/profile';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const groups: { icon: 'briefcase' | 'school'; label: string; items: TimelineItem[] }[] = [
+  { icon: 'briefcase', label: t('experience.work'), items: career },
+  { icon: 'school', label: t('experience.education'), items: education },
+];
 ---
 
 <section class="section container" id="experience">
@@ -14,48 +20,83 @@ const t = useTranslations(lang);
     <p class="section-lead">{t('experience.description')}</p>
   </div>
 
-  <ol class="timeline">
-    {
-      experience.map((item) => (
-        <li class="timeline-item reveal">
-          <div class="timeline-marker" aria-hidden="true">
-            <span class:list={['dot', { current: item.current }]} />
-          </div>
+  {
+    groups.map((group) => (
+      <div class="timeline-group">
+        <h3 class="group-title reveal">
+          <span class="group-icon">
+            <Icon name={group.icon} size={20} />
+          </span>
+          {group.label}
+        </h3>
 
-          <div class="card entry">
-            <div class="entry-header">
-              <h3>{item.title[lang]}</h3>
-              <span class:list={['period', { current: item.current }]}>
-                {item.current ? `${t('experience.current')} · ` : ''}
-                {item.period[lang]}
-              </span>
-            </div>
+        <ol class="timeline">
+          {group.items.map((item) => (
+            <li class="timeline-item reveal">
+              <div class="timeline-marker" aria-hidden="true">
+                <span class:list={['dot', { current: item.current }]} />
+              </div>
 
-            <p class="organization">
-              {item.organizationLink ? (
-                <a href={item.organizationLink} target="_blank" rel="noopener noreferrer">
-                  {item.organization}
-                </a>
-              ) : (
-                item.organization
-              )}
-            </p>
+              <div class="card entry">
+                <div class="entry-header">
+                  <h4>{item.title[lang]}</h4>
+                  <span class:list={['period', { current: item.current }]}>
+                    {item.current ? `${t('experience.current')} · ` : ''}
+                    {item.period[lang]}
+                  </span>
+                </div>
 
-            <p class="entry-description">{item.description[lang]}</p>
+                <p class="organization">
+                  {item.organizationLink ? (
+                    <a href={item.organizationLink} target="_blank" rel="noopener noreferrer">
+                      {item.organization[lang]}
+                    </a>
+                  ) : (
+                    item.organization[lang]
+                  )}
+                  <span class="location">· {item.location[lang]}</span>
+                </p>
 
-            <ul class="tag-list">
-              {item.tags.map((tag) => (
-                <li class="chip">{tag}</li>
-              ))}
-            </ul>
-          </div>
-        </li>
-      ))
-    }
-  </ol>
+                <p class="entry-description">{item.description[lang]}</p>
+
+                <ul class="tag-list">
+                  {item.tags.map((tag) => (
+                    <li class="chip">{tag}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))
+  }
 </section>
 
 <style>
+  .timeline-group {
+    margin-top: 2.5rem;
+  }
+
+  .group-title {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .group-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-chip);
+    color: var(--color-primary);
+  }
+
   .timeline {
     list-style: none;
     margin: 0;
@@ -114,7 +155,7 @@ const t = useTranslations(lang);
     gap: 0.5rem;
   }
 
-  .entry-header h3 {
+  .entry-header h4 {
     font-size: 1.15rem;
   }
 
@@ -142,6 +183,12 @@ const t = useTranslations(lang);
 
   .organization a:hover {
     text-decoration: underline;
+  }
+
+  .location {
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 0.9rem;
   }
 
   .entry-description {

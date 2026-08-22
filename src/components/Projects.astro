@@ -20,7 +20,10 @@ const t = useTranslations(lang);
       projects.map((project) => (
         <article class="card project reveal">
           <div class="project-header">
-            <h3>{project.title}</h3>
+            <div>
+              <h3>{project.title}</h3>
+              <span class="project-date">{project.date}</span>
+            </div>
             <div class="project-links">
               {project.isPrivate && (
                 <span class="project-link" title={t('projects.private')}>
@@ -88,6 +91,12 @@ const t = useTranslations(lang);
 
   .project-header h3 {
     font-size: 1.15rem;
+  }
+
+  .project-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
   }
 
   .project-links {
