@@ -1,0 +1,261 @@
+---
+import Icon from './Icon.astro';
+import paLogo from '../assets/images/pa_logo.svg';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { languages, defaultLang, type Lang } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const otherLang: Lang = lang === 'de' ? 'en' : 'de';
+const base = lang === defaultLang ? '' : `/${lang}`;
+
+const navItems = [
+  { href: `${base}/#about`, label: t('nav.about') },
+  { href: `${base}/#experience`, label: t('nav.experience') },
+  { href: `${base}/#projects`, label: t('nav.projects') },
+  { href: `${base}/#skills`, label: t('nav.skills') },
+  { href: `${base}/#contact`, label: t('nav.contact') },
+];
+---
+
+<header class="site-header">
+  <nav class="container nav" aria-label={t('nav.aria')}>
+    <a class="brand" href={`${base}/`}>
+      <img src={paLogo.src} alt="PA Logo" width="34" height="34" />
+      <span>Philipp Alber</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="nav-actions">
+      <button id="theme-toggle" class="icon-button" type="button" aria-label={t('theme.toggle')}>
+        <span class="icon-sun"><Icon name="sun" /></span>
+        <span class="icon-moon"><Icon name="moon" /></span>
+      </button>
+
+      <a class="lang-switch" href={getLocalizedPath(otherLang, Astro.url.pathname)} aria-label={t('lang.switch')}>
+        {languages[otherLang].slice(0, 2).toUpperCase()}
+      </a>
+
+      <button
+        id="menu-toggle"
+        class="icon-button menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-label={t('nav.menu.open')}
+      >
+        <span class="icon-menu"><Icon name="menu" /></span>
+        <span class="icon-close"><Icon name="close" /></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: var(--bg-glass);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.65rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .nav-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .icon-button:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+  }
+
+  /* Theme toggle shows the icon of the mode you would switch to */
+  .icon-sun,
+  .icon-moon,
+  .icon-menu,
+  .icon-close {
+    display: none;
+    line-height: 0;
+  }
+
+  :global([data-theme='dark']) .icon-sun {
+    display: block;
+  }
+
+  :global([data-theme='light']) .icon-moon,
+  :global(html:not([data-theme])) .icon-moon {
+    display: block;
+  }
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.4rem;
+    padding-inline: 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .lang-switch:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-toggle .icon-menu {
+    display: block;
+  }
+
+  :global(body.nav-open) .menu-toggle .icon-menu {
+    display: none;
+  }
+
+  :global(body.nav-open) .menu-toggle .icon-close {
+    display: block;
+  }
+
+  @media (max-width: 800px) {
+    .menu-toggle {
+      display: inline-flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      inset: 3.8rem 0 auto 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transform: translateY(-120%);
+      transition: transform var(--transition-slow);
+    }
+
+    :global(body.nav-open) .nav-links {
+      transform: translateY(0);
+    }
+
+    .nav-links li {
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 1rem;
+      font-size: 1.05rem;
+    }
+  }
+</style>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch (_) {
+      /* storage unavailable — theme still switches for this page */
+    }
+  });
+
+  const menuToggle = document.getElementById('menu-toggle');
+  menuToggle?.addEventListener('click', () => {
+    const open = document.body.classList.toggle('nav-open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
+
+  document.querySelectorAll('#nav-links a').forEach((link) => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav-open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

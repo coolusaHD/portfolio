@@ -1,0 +1,248 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import profileImage from '../assets/images/profile.png';
+import { contact } from '../data/profile';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="hero container" id="top">
+  <div class="hero-content">
+    <p class="badge">
+      <Icon name="shield" size={16} />
+      {t('hero.badge')}
+    </p>
+
+    <h1>
+      {t('hero.greeting')}
+      <span class="gradient-text">Philipp&nbsp;Alber</span>
+    </h1>
+
+    <p class="roles">
+      <span>{t('hero.role1')}</span>
+      <span class="role-divider" aria-hidden="true">•</span>
+      <span>{t('hero.role2')}</span>
+      <span class="role-divider" aria-hidden="true">•</span>
+      <span>{t('hero.role3')}</span>
+    </p>
+
+    <p class="tagline">{t('hero.tagline')}</p>
+
+    <div class="cta-row">
+      <a class="button button-primary" href="#projects">{t('hero.cta.projects')}</a>
+      <a class="button button-ghost" href={`mailto:${contact.email}`}>{t('hero.cta.contact')}</a>
+    </div>
+
+    <div class="social-row">
+      <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <Icon name="github" size={22} />
+      </a>
+      <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <Icon name="linkedin" size={22} />
+      </a>
+      <a href={`mailto:${contact.email}`} aria-label="E-Mail">
+        <Icon name="mail" size={22} />
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="portrait-ring">
+      <Image src={profileImage} alt="" width={320} height={320} loading="eager" />
+    </div>
+  </div>
+
+  <a class="scroll-hint" href="#about">
+    <span>{t('hero.scroll')}</span>
+    <Icon name="arrow-down" size={18} />
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 2rem;
+    padding-block: 7rem 4rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg-chip);
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    animation: fade-slide-in 700ms 100ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    animation: fade-slide-in 700ms 200ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  h1 .gradient-text {
+    display: block;
+  }
+
+  .roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+    font-weight: 500;
+    color: var(--text-muted);
+    animation: fade-slide-in 700ms 300ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  .role-divider {
+    color: var(--color-secondary);
+  }
+
+  .tagline {
+    max-width: 34rem;
+    margin-top: 1.25rem;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    animation: fade-slide-in 700ms 400ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
+    animation: fade-slide-in 700ms 500ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 1.1rem;
+    margin-top: 2.25rem;
+    animation: fade-slide-in 700ms 600ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  .social-row a {
+    color: var(--text-muted);
+    transition:
+      color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .social-row a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    animation: fade-slide-in 700ms 400ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  .portrait-ring {
+    position: relative;
+    width: min(320px, 70vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 6px;
+    background: conic-gradient(from 180deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+    animation: ring-spin 14s linear infinite;
+  }
+
+  .portrait-ring :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid var(--bg);
+    animation: ring-spin 14s linear infinite reverse;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    animation: bounce-soft 2.4s ease-in-out infinite;
+  }
+
+  .scroll-hint:hover {
+    color: var(--color-primary);
+  }
+
+  @keyframes fade-slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes ring-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes bounce-soft {
+    0%,
+    100% {
+      transform: translate(-50%, 0);
+    }
+    50% {
+      transform: translate(-50%, 8px);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding-top: 6rem;
+    }
+
+    .hero-visual {
+      order: -1;
+    }
+
+    .portrait-ring {
+      width: min(220px, 60vw);
+    }
+
+    .roles,
+    .cta-row,
+    .social-row {
+      justify-content: center;
+    }
+
+    .tagline {
+      margin-inline: auto;
+    }
+  }
+</style>

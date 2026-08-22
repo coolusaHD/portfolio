@@ -1,0 +1,83 @@
+---
+import Icon from './Icon.astro';
+import { skills } from '../data/profile';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const groupMeta = {
+  security: { icon: 'shield', label: t('skills.security') },
+  languages: { icon: 'code', label: t('skills.languages') },
+  frameworks: { icon: 'rocket', label: t('skills.frameworks') },
+  devops: { icon: 'briefcase', label: t('skills.devops') },
+} as const;
+---
+
+<section class="section container" id="skills">
+  <div class="reveal">
+    <div class="section-heading">
+      <h2>{t('skills.title')}</h2>
+    </div>
+    <p class="section-lead">{t('skills.description')}</p>
+  </div>
+
+  <div class="skills-grid">
+    {
+      skills.map((group) => (
+        <div class="card skill-group reveal">
+          <h3>
+            <span class="group-icon">
+              <Icon name={groupMeta[group.key].icon} size={20} />
+            </span>
+            {groupMeta[group.key].label}
+          </h3>
+          <ul class="tag-list">
+            {group.items.map((item) => (
+              <li class="chip">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-group {
+    padding: 1.5rem;
+  }
+
+  .skill-group h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1.05rem;
+  }
+
+  .group-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-chip);
+    color: var(--color-primary);
+  }
+
+  .tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0;
+    padding: 0;
+  }
+</style>

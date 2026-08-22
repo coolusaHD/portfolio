@@ -1,0 +1,77 @@
+---
+import Icon from './Icon.astro';
+import { contact } from '../data/profile';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="section container" id="contact">
+  <div class="card contact-card reveal">
+    <h2>{t('contact.title')}</h2>
+    <p>{t('contact.description')}</p>
+
+    <a class="button button-primary" href={`mailto:${contact.email}`}>
+      <Icon name="mail" size={18} />
+      {t('contact.cta')}
+    </a>
+
+    <div class="contact-links">
+      <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <Icon name="github" size={24} />
+      </a>
+      <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <Icon name="linkedin" size={24} />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-card {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: clamp(2.5rem, 6vw, 4rem);
+    display: grid;
+    justify-items: center;
+    gap: 1.25rem;
+  }
+
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(49, 157, 160, 0.12), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(193, 30, 103, 0.12), transparent 45%);
+    pointer-events: none;
+  }
+
+  .contact-card h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .contact-card p {
+    max-width: 30rem;
+    color: var(--text-muted);
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .contact-links a {
+    color: var(--text-muted);
+    transition:
+      color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .contact-links a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+</style>

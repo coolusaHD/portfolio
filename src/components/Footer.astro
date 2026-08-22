@@ -1,0 +1,54 @@
+---
+import Icon from './Icon.astro';
+import { contact } from '../data/profile';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>{t('footer.built')}</p>
+    <p class="muted">© {currentYear} Philipp Alber. {t('footer.rights')}</p>
+    <a class="source-link" href="https://github.com/coolusaHD/portfolio" target="_blank" rel="noopener noreferrer">
+      <Icon name="github" size={16} />
+      {t('footer.source')}
+    </a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding-block: 2rem;
+    margin-top: 2rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    justify-items: center;
+    gap: 0.4rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .muted {
+    color: var(--text-muted);
+  }
+
+  .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .source-link:hover {
+    color: var(--color-primary);
+  }
+</style>

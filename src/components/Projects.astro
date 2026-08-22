@@ -1,0 +1,150 @@
+---
+import Icon from './Icon.astro';
+import { projects } from '../data/profile';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="section container" id="projects">
+  <div class="reveal">
+    <div class="section-heading">
+      <h2>{t('projects.title')}</h2>
+    </div>
+    <p class="section-lead">{t('projects.description')}</p>
+  </div>
+
+  <div class="project-grid">
+    {
+      projects.map((project) => (
+        <article class="card project reveal">
+          <div class="project-header">
+            <div>
+              <h3>{project.title}</h3>
+              <span class="project-date">{project.date}</span>
+            </div>
+            <div class="project-links">
+              {project.isPrivate && (
+                <span class="project-link" title={t('projects.private')}>
+                  <Icon name="lock" size={18} />
+                  <span class="visually-hidden">{t('projects.private')}</span>
+                </span>
+              )}
+              {project.repoLink && (
+                <a
+                  class="project-link"
+                  href={project.repoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.title} — ${t('projects.github')}`}
+                >
+                  <Icon name="github" size={18} />
+                </a>
+              )}
+              {project.link && (
+                <a
+                  class="project-link"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.title} — ${t('projects.website')}`}
+                >
+                  <Icon name="external" size={18} />
+                </a>
+              )}
+            </div>
+          </div>
+
+          <p class="project-description">{project.description[lang]}</p>
+
+          <ul class="tag-list">
+            {project.tech.map((tech) => (
+              <li class="chip">{tech}</li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .project-header h3 {
+    font-size: 1.15rem;
+  }
+
+  .project-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    color: var(--text-muted);
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+  }
+
+  a.project-link:hover {
+    color: var(--color-primary);
+    background: var(--bg-chip);
+  }
+
+  .project-description {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+
+  .tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0;
+    padding: 0;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+</style>
