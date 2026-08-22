@@ -14,8 +14,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Keep the job id (and therefore the check-run name) as "validate": the branch
+  # protection on main requires a status check with exactly that name.
   validate:
-    name: 🔎 Lint, format & build
     runs-on: ubuntu-latest
 
     steps:
