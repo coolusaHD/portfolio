@@ -1,33 +1,70 @@
+name: 🚀 Deploy website on push
+
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
-name: 🚀 Deploy website on push
+permissions:
+  contents: read
+
+# Never let two deployments write to the FTP server at the same time: the action
+# keeps its sync state in a file on the server, and a concurrent run corrupts it.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
         with:
-          node-version: '22'
+          node-version-file: '.nvmrc'
           cache: 'npm'
+
+      - name: 🔐 Check FTP credentials
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER_ADRESS }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          missing=''
+          if [ -z "$FTP_SERVER" ]; then missing="$missing FTP_SERVER_ADRESS"; fi
+          if [ -z "$FTP_USERNAME" ]; then missing="$missing FTP_USERNAME"; fi
+          if [ -z "$FTP_PASSWORD" ]; then missing="$missing FTP_PASSWORD"; fi
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secret(s):$missing"
+            exit 1
+          fi
 
       - name: 📦 Install dependencies
         run: npm ci
 
       - name: Check code style
         run: |
-          npm run lint
           npm run prettier-check
+          npm run lint
 
       - name: 🔨 Build Project
+        run: npm run build
+
+      # The FTP sync deletes remote files that are missing locally, so an empty or
+      # broken build directory would wipe the live site. Bail out before that happens.
+      - name: ✅ Verify build output
         run: |
-          npm run build
+          for file in dist/index.html dist/en/index.html dist/404.html dist/sitemap-index.xml; do
+            if [ ! -s "$file" ]; then
+              echo "::error::Expected build artefact '$file' is missing or empty - aborting deployment."
+              exit 1
+            fi
+          done
+          echo "Deploying $(find dist -type f | wc -l) files."
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -35,4 +72,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER_ADRESS }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          # Optional repository variables: set FTP_SERVER_DIR if the web root is not
+          # the FTP root (e.g. ./httpdocs/), and FTP_PROTOCOL to ftps for an
+          # encrypted transfer if the host supports it.
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftp' }}
+          server-dir: ${{ vars.FTP_SERVER_DIR || './' }}
           local-dir: ./dist/
