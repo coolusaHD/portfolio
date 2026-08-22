@@ -1,20 +1,31 @@
+name: 🚀 Deploy website on push
+
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
-name: 🚀 Deploy website on push
+permissions:
+  contents: read
+
+# Never let two deployments write to the FTP server at the same time: the action
+# keeps its sync state in a file on the server, and a concurrent run corrupts it.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build:
+    name: 🔨 Build
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
         with:
-          node-version: '22'
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: 📦 Install dependencies
@@ -22,12 +33,30 @@ jobs:
 
       - name: Check code style
         run: |
-          npm run lint
           npm run prettier-check
+          npm run lint
 
       - name: 🔨 Build Project
-        run: |
-          npm run build
+        run: npm run build
+
+      - name: ⬆️ Upload build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    name: 🎉 Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Download build output
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -35,4 +64,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER_ADRESS }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          # Optional repository variables: set FTP_SERVER_DIR if the web root is not
+          # the FTP root (e.g. ./httpdocs/), and FTP_PROTOCOL to ftps for an
+          # encrypted transfer if the host supports it.
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftp' }}
+          server-dir: ${{ vars.FTP_SERVER_DIR || './' }}
           local-dir: ./dist/

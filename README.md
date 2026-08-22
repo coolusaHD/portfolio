@@ -20,6 +20,8 @@ Version 1 was a React app — version 2 is a full rewrite with Astro: zero JavaS
 
 ## 🛠`Development`
 
+Node.js 22 is required — see [`.nvmrc`](.nvmrc) (`nvm use` picks it up automatically).
+
 ```bash
 npm install
 npm run dev            # dev server at localhost:4321

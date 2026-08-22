@@ -1,0 +1,42 @@
+name: validate-lint-prettier
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Keep the job id (and therefore the check-run name) as "validate": the branch
+  # protection on main requires a status check with exactly that name.
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run prettier-check
+
+      - name: Check types & a11y
+        run: npm run lint
+
+      - name: Build project
+        run: npm run build
