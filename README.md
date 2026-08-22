@@ -1,25 +1,33 @@
 # My Portfolio
 
-This repository contains a react app that I built.
+This repository contains my personal portfolio website, built with [Astro](https://astro.build).
 
-You can find the app here:
+You can find the site here:
 [https://philippalber.de](https://philippalber.de)
 
 [![🚀 Deploy website on push](https://github.com/coolusaHD/portfolio/actions/workflows/deployAtFTP.yml/badge.svg?branch=main)](https://github.com/coolusaHD/portfolio/actions/workflows/deployAtFTP.yml)
 
-The idea behind this project is to create a small portfolio website.
-For me it was always a dream to have an own personal website to put on my CVs.
-Therefore I decided to create a react app for it and make it puvlic to motivate other developers to create their own portfolio websites.
-
-The first inspiration for this project was the Homepage of [craftzdog](https://github.com/craftzdog/craftzdog-homepage). So thank you @craftzdog!
+The idea behind this project is to create a small portfolio website as a modern companion to the traditional CV.
+Version 1 was a React app — version 2 is a full rewrite with Astro: zero JavaScript frameworks at runtime, fully static, and fast by default.
 
 ## 📚`Stack`
 
-- [React](https://reactjs.org)
-- [Mui](https://mui.com)
-- [Styled Components](https://styled-components.com)
-- [Haikei](https://app.haikei.app/)
-- [AOS](https://github.com/michalsnik/aos)
+- [Astro](https://astro.build) — static site generation with islands architecture
+- TypeScript
+- Vanilla CSS with design tokens (dark/light theme, brand colors kept from v1)
+- Built-in i18n routing (German `/`, English `/en/`)
+- [Fontsource](https://fontsource.org) — self-hosted Inter & Space Grotesk
+
+## 🛠`Development`
+
+```bash
+npm install
+npm run dev            # dev server at localhost:4321
+npm run build          # production build to ./dist
+npm run preview        # preview the production build
+npm run lint           # astro check (types + a11y hints)
+npm run prettier-check # code style
+```
 
 ## 📃`License`
 
@@ -32,18 +40,10 @@ You can create your own portfolio with this project under following conditions:
 
 ## 🧑‍🤝‍🧑`Contributing`
 
-- ME
-
 If you have any questions or suggestions, please open an issue or pull request.
 I really appreciate any feedback. Also if you find a better way to do something, do not hesitate to open a pull request and teach me how to improve this project.
 
-## ✨`Inspriations`
+## ✨`Inspirations`
 
 - [craftzdog](https://github.com/craftzdog/craftzdog-homepage)
 - [gazi](https://github.com/gazijarin/Gazi)
-
-## 🙏`Thanks to`
-
-- [Github](https://github.com) for the great service of hosting this project.
-- [Mui](https://mui.com) for their great UI library.
-- [michalsnik](https://github.com/michalsnik/aos) for the amazing library that makes the animations work.

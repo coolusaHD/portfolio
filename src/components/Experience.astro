@@ -1,0 +1,160 @@
+---
+import { experience } from '../data/profile';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="section container" id="experience">
+  <div class="reveal">
+    <div class="section-heading">
+      <h2>{t('experience.title')}</h2>
+    </div>
+    <p class="section-lead">{t('experience.description')}</p>
+  </div>
+
+  <ol class="timeline">
+    {
+      experience.map((item) => (
+        <li class="timeline-item reveal">
+          <div class="timeline-marker" aria-hidden="true">
+            <span class:list={['dot', { current: item.current }]} />
+          </div>
+
+          <div class="card entry">
+            <div class="entry-header">
+              <h3>{item.title[lang]}</h3>
+              <span class:list={['period', { current: item.current }]}>
+                {item.current ? `${t('experience.current')} · ` : ''}
+                {item.period[lang]}
+              </span>
+            </div>
+
+            <p class="organization">
+              {item.organizationLink ? (
+                <a href={item.organizationLink} target="_blank" rel="noopener noreferrer">
+                  {item.organization}
+                </a>
+              ) : (
+                item.organization
+              )}
+            </p>
+
+            <p class="entry-description">{item.description[lang]}</p>
+
+            <ul class="tag-list">
+              {item.tags.map((tag) => (
+                <li class="chip">{tag}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.55rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    opacity: 0.5;
+  }
+
+  .timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+  }
+
+  .timeline-marker {
+    position: relative;
+  }
+
+  .dot {
+    position: absolute;
+    top: 1.4rem;
+    left: 0.2rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--color-primary);
+  }
+
+  .dot.current {
+    background: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(49, 157, 160, 0.25);
+  }
+
+  .entry {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .entry-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .entry-header h3 {
+    font-size: 1.15rem;
+  }
+
+  .period {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .period.current {
+    color: var(--color-secondary);
+  }
+
+  .organization {
+    margin-top: 0.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .organization a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .organization a:hover {
+    text-decoration: underline;
+  }
+
+  .entry-description {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Philipp Alber">
+  <section class="section container not-found">
+    <h1 class="gradient-text">404</h1>
+    <p>Diese Seite existiert nicht. / This page does not exist.</p>
+    <a class="button button-primary" href="/">philippalber.de</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 70svh;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    padding-top: 7rem;
+  }
+
+  .not-found h1 {
+    font-size: clamp(4rem, 15vw, 8rem);
+  }
+
+  .not-found p {
+    color: var(--text-muted);
+  }
+</style>

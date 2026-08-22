@@ -1,0 +1,99 @@
+---
+import Icon from './Icon.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const facts = [
+  { icon: 'school', label: t('about.fact.study') },
+  { icon: 'shield', label: t('about.fact.work') },
+  { icon: 'rocket', label: t('about.fact.founder') },
+  { icon: 'map-pin', label: t('about.fact.location') },
+] as const;
+---
+
+<section class="section container" id="about">
+  <div class="reveal">
+    <div class="section-heading">
+      <h2>{t('about.title')}</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>{t('about.p1')}</p>
+        <p>{t('about.p2')}</p>
+        <p>{t('about.p3')}</p>
+      </div>
+
+      <ul class="fact-list">
+        {
+          facts.map((fact) => (
+            <li class="card fact">
+              <span class="fact-icon">
+                <Icon name={fact.icon} size={22} />
+              </span>
+              {fact.label}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 1.5rem;
+  }
+
+  .about-text {
+    display: grid;
+    gap: 1.1rem;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+  }
+
+  .about-text p:first-child {
+    color: var(--text);
+  }
+
+  .fact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .fact {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .fact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    background: var(--bg-chip);
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 800px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
