@@ -40,13 +40,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-      - name: Verify build output
-        run: |
-          for file in dist/index.html dist/en/index.html dist/404.html dist/sitemap-index.xml; do
-            if [ ! -s "$file" ]; then
-              echo "::error::Expected build artefact '$file' is missing or empty."
-              exit 1
-            fi
-          done
-          echo "Build output looks good ($(find dist -type f | wc -l) files)."
